@@ -199,7 +199,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 [ Header Desktop ]*/
 
 .container-menu-desktop {
-  height: auto;
+  height: 70px;
   width: 100%;
   position: relative;
   -webkit-transition: all 0.3s;
@@ -217,7 +217,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .header-v4 .container-menu-desktop {
-  height: 124px;
+  height: 70px;
 }
 
 
@@ -440,7 +440,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /*---------------------------------------------*/
 .main-menu > li:hover > a {
   text-decoration: none;
-  color: #6c7ae0;
+  color: #2FB7EC;
 }
 
 .main-menu > li:hover > .sub-menu {
@@ -633,14 +633,17 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .header-v4 .fix-menu-desktop.container-menu-desktop {
-  height: 110px;
+  height: 70px;
 }
 
 /*---------------------------------------------*/
 .main-menu > li.active-menu > a {
-  color: #6c7ae0;
+  color: #2FB7EC;
 }
 
+.main-menu > li.active-menu1 > a {
+  color: #2FB7EC;
+}
 
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
