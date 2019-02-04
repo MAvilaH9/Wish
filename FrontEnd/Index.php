@@ -3,12 +3,17 @@
 <!-- Product -->
 <section class="">
     <div class="container">
-       <!-- <div class="p-b-10">
-            <h3 class="ltext-103 cl5">
-                Product Overview
-            </h3>
-        </div>-->
-        
+
+        <div class="modal">
+            <div class="form">
+                <h3>¡Crea una cuenta para ver los productos!</h1>
+                <hr>
+                <form action="">
+                    <input type="text" placeholder="Usuario">
+                </form>
+            </div>
+        </div>
+
         <br> <br>
         <div class="row isotope-grid">
             <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
