@@ -1,3 +1,17 @@
+<?php
+session_start();
+if (isset($_SESSION['Nombre_Usuario'])) {
+
+
+}else{
+	header('location:login.php');
+}
+
+if ($_SESSION['IdPefil'] != 1) {
+	
+	header('location:Index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,34 +86,47 @@
 							<li>
 								<a href="#">Más</a>
 								<ul class="sub-menu">
-									<li><a href="#">Homepage 1</a></li>
-									<li><a href="#">Homepage 2</a></li>
-									<li><a href="#">Homepage 3</a></li>
+									<li><a href="#">Accesorios</a></li>
+									<li><a href="#">Accesorios de teléfono</a></li>
+									<li><a href="#">Deportes y actividades al aire libre</a></li>
+									<li><a href="#">Moda</a></li>
+									<li><a href="#">Blusas</a></li>
+									<li><a href="#">Zapatos</a></li>
+									<li><a href="#">Cuidado personal</a></li>
+									<li><a href="#">Aparatos electrónicos</a></li>
 								</ul>
 							</li>
 						</ul>
-					</div>	
-
-					<!-- Icon header -->
+					</div>
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<!-- Search Area -->
-						<div class="search-area">
-							<form action="#" method="post">
-								<input type="search" name="search" id="headerSearch" placeholder="Buscar">
-								<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-							</form>
-						</div>
-						
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<a href="#"><img src="images/usuario.png" alt=""></a>
-						</div>
+						<div class="menu-desktop">
+							<ul class="main-menu">
+								<!-- Search Area -->
+								<li>
+									<div class="search-area">
+										<form action="#" method="post">
+											<input type="search" name="search" id="headerSearch" placeholder="Buscar">
+											<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+										</form>
+									</div>
+								</li>
+									
+								<li>
+									<a href="#"><img src="images/usuario.png" alt=""></a>
+									<ul class="sub-menu">
+										<li><a href="#"><?php echo''.$_SESSION['Nombre_Usuario'];?> &nbsp;</a></li>
+									</ul>
+								</li>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
-							<i class="zmdi zmdi-shopping-cart"></i>
+								<li>
+									<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+										<i class="zmdi zmdi-shopping-cart"></i>
+									</div>
+								</li>
+							</ul>
 						</div>
-
-					</nav>
-				</div>
+					</div>
+				</nav>
 			</div>	
 		</div>
 
