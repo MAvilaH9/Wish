@@ -32,11 +32,11 @@ if ($contrasenia == $resultado['Contrasenia']  && $resultado['Correo'] == $corre
     }
     
     if($resultado['IdPerfil'] != 1){
-        header('location:../FrontEnd/Index.php');    
+       // header('location:../FrontEnd/Carrito.php');    
     }
   
 }
 else{
-    header('location:../FrontEnd/Index.php');
+    //header('location:../FrontEnd/Index.php');
 }
 ?>

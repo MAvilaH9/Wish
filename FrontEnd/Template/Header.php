@@ -1,16 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['Nombre_Usuario'])) {
 
-
-}else{
-	header('location:login.php');
-}
-
-if ($_SESSION['IdPefil'] != 1) {
-	
-	header('location:Index.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,32 +89,37 @@ if ($_SESSION['IdPefil'] != 1) {
 						</ul>
 					</div>
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<div class="menu-desktop">
-							<ul class="main-menu">
-								<!-- Search Area -->
-								<li>
-									<div class="search-area">
-										<form action="#" method="post">
-											<input type="search" name="search" id="headerSearch" placeholder="Buscar">
-											<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-										</form>
-									</div>
-								</li>
-									
-								<li>
-									<a href="#"><img src="images/usuario.png" alt=""></a>
-									<ul class="sub-menu">
-										<li><a href="#"><?php echo''.$_SESSION['Nombre_Usuario'];?> &nbsp;</a></li>
-									</ul>
-								</li>
-
-								<li>
-									<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
-										<i class="zmdi zmdi-shopping-cart"></i>
-									</div>
-								</li>
-							</ul>
+						<!-- Search Area -->
+						<div class="search-area">
+							<form action="#" method="post">
+								<input type="search" name="search" id="headerSearch" placeholder="Buscar">
+								<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+							</form>
 						</div>
+									
+						<ul class="main-menu">
+							<li>
+								<a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?></a>
+								<ul class="sub-menu">
+									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <br> <hr></a></li>
+									<li><a href="#">Lista de Deseos</a></li> 
+									<li><a href="#">Carrito de Compras</a></li> <hr>
+									<li><a href="#">Historial de Pedidos</a></li>
+									<li><a href="#">Wish Cash</a></li>
+									<li><a href="#">Recompensas</a></li><hr>
+									<li><a href="#">Preguntas Frecuentes</a></li>
+									<li><a href="#">Configuración</a></li>
+									<li><a href="../FrontEnd/Login.php">Salir</a></li>
+								</ul>
+							</li>
+						</ul>
+
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+							<i class="zmdi zmdi-shopping-cart"></i>
+						</div>
+						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+							<i class="zmdi zmdi-favorite-outline"></i>
+						</a>
 					</div>
 				</nav>
 			</div>	
@@ -299,3 +294,4 @@ if ($_SESSION['IdPefil'] != 1) {
 			</div>
 		</div>
 	</div>
+
