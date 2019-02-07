@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="css/login/select2.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/login/util.css">
-	<link rel="stylesheet" type="text/css" href="css/login/main.css">
+	<link rel="stylesheet" type="text/css" href="css/login/estilos.css">
 <!--===============================================================================================-->
 </head>
 <body>

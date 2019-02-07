@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,7 +100,7 @@ session_start();
 							<li>
 								<a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?></a>
 								<ul class="sub-menu">
-									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <br> <hr></a></li>
+									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
 									<li><a href="#">Lista de Deseos</a></li> 
 									<li><a href="#">Carrito de Compras</a></li> <hr>
 									<li><a href="#">Historial de Pedidos</a></li>
@@ -109,7 +108,7 @@ session_start();
 									<li><a href="#">Recompensas</a></li><hr>
 									<li><a href="#">Preguntas Frecuentes</a></li>
 									<li><a href="#">Configuración</a></li>
-									<li><a href="../FrontEnd/Login.php">Salir</a></li>
+									<li><a href="../Recursos/Logout.php">Salir</a></li>
 								</ul>
 							</li>
 						</ul>
