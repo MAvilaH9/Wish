@@ -67,7 +67,7 @@ if ($sentencia_agregar->execute(array($Nombre_Usuario, $Apellidos, $Correo, $Con
 
     if ($IdPerfil == 3) {
 
-        header('location:../FrontEnd/Log.php');
+        header('location:../FrontEnd/Login.php');
 
     } elseif ($IdPerfil = 1) {
 

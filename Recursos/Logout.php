@@ -18,5 +18,5 @@ if (ini_get("session.use_cookies")) {
 // Finalmente, destruir la sesión.
 session_destroy();
 
-header('Location:../FrontEnd/Log.php');
+header('Location:../FrontEnd/Login.php');
 ?>
