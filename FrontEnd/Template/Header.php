@@ -36,7 +36,6 @@ session_start();
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
-	<link rel="stylesheet" type="text/css" href="css/misestilos.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -88,13 +87,6 @@ session_start();
 						</ul>
 					</div>
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<!-- Search Area -->
-						<div class="search-area">
-							<form action="#" method="post">
-								<input type="search" name="search" id="headerSearch" placeholder="Buscar">
-								<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-							</form>
-						</div>
 									
 						<ul class="main-menu">
 							<li>
@@ -150,12 +142,6 @@ session_start();
 
 			<!-- Icon header -->
 			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div class="search-area">
-					<form action="#" method="post">
-						<input type="search" name="search" id="headerSearch" placeholder="Buscar">
-						<button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-					</form>
-				</div>
 
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 js-show-cart">
 					<a href="#"><img src="images/usuario.png" alt=""></a>

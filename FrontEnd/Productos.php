@@ -1,56 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Wish</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/w.jpg"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/icon-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="css/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="css/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/slick.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/perfect-scrollbar.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/estilos.css">
-	<link rel="stylesheet" type="text/css" href="css/misestilos.css">
-<!--===============================================================================================-->
-</head>
-<!-- Product -->
-<section class="">
-    <div class="container">
 
-        <br> <br>
+<!-- Product -->
+<section class="bg0 p-t-23 p-b-140">
+    <div class="container">
+		<div class="flex-w flex-sb-m p-b-52">
+			<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+			</div>
+			<div class="flex-w flex-c-m m-tb-10">
+				
+				<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+					<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
+					<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+					Buscar
+				</div>
+			</div>
+			<!-- Search product -->
+			<div class="dis-none panel-search w-full p-t-10 p-b-15">
+				<div class="bor8 dis-flex p-l-15">
+					<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Buscar">
+				</div>	
+			</div>
+		</div>			
+
         <div class="row isotope-grid">
             <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-            <?php
-               include "../Recursos/Conexion.php";
+				<?php
+				include "../Recursos/Conexion.php";
 
-                $sql= $pdo->prepare("SELECT b.cantidadVendidaBanner, p.nombreProducto, p.descripcionProducto, p.precioBaseProducto, i.imagenPrincipalProducto from producto p inner join imagenproducto i on p.idImagenProducto=i.idImagenProducto inner join banner b on b.idProducto=p.idProducto");
-                $sql->execute();
-                $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
-            ?>
-            <?php foreach ($resultado as $imagen):?>
+					$sql= $pdo->prepare("SELECT b.cantidadVendidaBanner, p.nombreProducto, p.descripcionProducto, p.precioBaseProducto, i.imagenPrincipalProducto from producto p inner join imagenproducto i on p.idImagenProducto=i.idImagenProducto inner join banner b on b.idProducto=p.idProducto");
+					$sql->execute();
+					$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
+				?>
+            	<?php foreach ($resultado as $imagen):?>
                 <!-- Block2 -->
                 <div class="block2">
                     <div class="block2-pic hov-img0">
@@ -93,108 +76,3 @@
     </div>
 </section>
 
-
-<!--===============================================================================================-->	
-<script src="js/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="js/select2.min.js"></script>
-	<script>
-		$(".js-select2").each(function(){
-			$(this).select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $(this).next('.dropDownSelect2')
-			});
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="js/moment.min.js"></script>
-	<script src="js/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="js/slick.min.js"></script>
-	<script src="js/slick-custom.js"></script>
-<!--===============================================================================================-->
-	<script src="js/parallax100.js"></script>
-	<script>
-        $('.parallax100').parallax100();
-	</script>
-<!--===============================================================================================-->
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script>
-		$('.gallery-lb').each(function() { // the containers for all your galleries
-			$(this).magnificPopup({
-		        delegate: 'a', // the selector for gallery item
-		        type: 'image',
-		        gallery: {
-		        	enabled:true
-		        },
-		        mainClass: 'mfp-fade'
-		    });
-		});
-	</script>
-<!--===============================================================================================-->
-	<script src="js/isotope.pkgd.min.js"></script>
-<!--===============================================================================================-->
-	<script src="js/sweetalert.min.js"></script>
-	<script>
-		$('.js-addwish-b2').on('click', function(e){
-			e.preventDefault();
-		});
-
-		$('.js-addwish-b2').each(function(){
-			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-
-				$(this).addClass('js-addedwish-b2');
-				$(this).off('click');
-			});
-		});
-
-		$('.js-addwish-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-
-				$(this).addClass('js-addedwish-detail');
-				$(this).off('click');
-			});
-		});
-
-		/*---------------------------------------------*/
-
-		$('.js-addcart-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
-			});
-		});
-	
-	</script>
-<!--===============================================================================================-->
-	<script src="js/perfect-scrollbar.min.js"></script>
-	<script>
-		$('.js-pscroll').each(function(){
-			$(this).css('position','relative');
-			$(this).css('overflow','hidden');
-			var ps = new PerfectScrollbar(this, {
-				wheelSpeed: 1,
-				scrollingThreshold: 1000,
-				wheelPropagation: false,
-			});
-
-			$(window).on('resize', function(){
-				ps.update();
-			})
-		});
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-
-</body>
-</html>
