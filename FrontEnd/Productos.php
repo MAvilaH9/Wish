@@ -25,15 +25,14 @@
 		</div>			
 
         <div class="row isotope-grid">
+            <?php
+                include "../Recursos/Conexion.php";
+                $sql= $pdo->prepare("SELECT b.cantidadVendidaBanner, p.nombreProducto, p.descripcionProducto, p.precioBaseProducto, i.imagenPrincipalProducto from producto p inner join imagenproducto i on p.idImagenProducto=i.idImagenProducto inner join banner b on b.idProducto=p.idProducto");
+				$sql->execute();
+				$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
+			?>
+            <?php foreach ($resultado as $imagen):?>
             <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-				<?php
-				include "../Recursos/Conexion.php";
-
-					$sql= $pdo->prepare("SELECT b.cantidadVendidaBanner, p.nombreProducto, p.descripcionProducto, p.precioBaseProducto, i.imagenPrincipalProducto from producto p inner join imagenproducto i on p.idImagenProducto=i.idImagenProducto inner join banner b on b.idProducto=p.idProducto");
-					$sql->execute();
-					$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
-				?>
-            	<?php foreach ($resultado as $imagen):?>
                 <!-- Block2 -->
                 <div class="block2">
                     <div class="block2-pic hov-img0">
@@ -66,6 +65,7 @@
             </div>
             <?php endforeach ?>
         </div>
+        
 
         <!-- Load more -->
         <div class="flex-c-m flex-w w-full p-t-45">
