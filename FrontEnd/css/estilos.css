@@ -1607,7 +1607,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: rigth;
     border: none;
   }
   
@@ -1741,8 +1741,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   
   .show-search:hover:after,
   .show-filter:hover:after {
-    background-color: #717fe0;
-    border-color: #717fe0;
+    background-color: #2FB7EC;
+    border-color: #2FB7EC;
   }
   
   /*---------------------------------------------*/
@@ -2487,6 +2487,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   .size-113 {
     width: 38px;
     height: 60px;
+    background: white;
   }
   
   .size-114 {

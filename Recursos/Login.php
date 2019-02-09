@@ -6,8 +6,8 @@ require_once ('Conexion.php');
 $correo = $_POST['Correo'];
 $contrasenia = $_POST['Contrasenia'];
 
-//$sql = 'SELECT * FROM usuario WHERE Correo = ?';
-$sql = 'SELECT * FROM usuario WHERE correoUsuario = ?';
+$sql = 'SELECT * FROM usuario WHERE Correo = ?';
+//$sql = 'SELECT * FROM usuario WHERE correoUsuario = ?';
 $sentencia = $pdo->prepare($sql);
 $sentencia->execute(array($correo));
 $resultado = $sentencia->fetch();
@@ -19,7 +19,7 @@ if (!$resultado) {
     die();
 }
 
-
+/*
 
 if ($contrasenia == $resultado['contraseniaUsuario']  && $resultado['correoUsuario'] == $correo){
 
@@ -40,11 +40,11 @@ if ($contrasenia == $resultado['contraseniaUsuario']  && $resultado['correoUsuar
 else{
     //header('location:../FrontEnd/Index.php');
 }
+*/
 
-/*
 if ($contrasenia == $resultado['Contrasenia']  && $resultado['Correo'] == $correo){
 
-    $_SESSION['Nombre_Usuario'] = $resultado['Nombre_Usuario']; 
+    $_SESSION['Nombre_Usuario'] = $resultado['NombreUsuario']; 
     $_SESSION['Apellidos'] = $resultado['Apellidos']; 
     $_SESSION['IdPerfil'] = $resultado['IdPerfil']; 
     $_SESSION['Correo'] = $resultado['Correo']; 
@@ -62,4 +62,3 @@ else{
     //header('location:../FrontEnd/Index.php');
 }
 ?>
-*/
