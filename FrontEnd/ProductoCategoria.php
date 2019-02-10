@@ -9,7 +9,7 @@ include "../Recursos/Conexion.php";
         <div class="row isotope-grid">
             <?php
                 $IdCategoria=$_GET['IdCategoria'];
-                $sql= $pdo->prepare("SELECT p.NombeProducto, p.PrecioDescuento, p.IdCategoria, i.Portada from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto where IdCategoria=$IdCategoria");
+                $sql= $pdo->prepare("SELECT p.IdProducto,p.NombeProducto, p.PrecioDescuento, p.IdCategoria, i.Portada from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto where IdCategoria=$IdCategoria");
 				$sql->execute();
 				$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 			?>
