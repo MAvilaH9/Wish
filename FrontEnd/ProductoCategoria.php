@@ -13,14 +13,14 @@ include "../Recursos/Conexion.php";
 				$sql->execute();
 				$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 			?>
-            <?php foreach ($resultado as $imagen):?>
+            <?php foreach ($resultado as $dato):?>
             <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
                 <!-- Block2 -->
                 <div class="block2">
                     <div class="block2-pic hov-img0">
-                        <img src="../FrontEnd/imgProductos/<?php echo $imagen['Portada']?>.jpg" alt="IMG-PRODUCT">
+                        <img src="../FrontEnd/imgProductos/<?php echo $dato['Portada']?>.jpg" alt="IMG-PRODUCT">
 
-                        <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                        <a href="DetalleProducto.php?IdProducto=<?php echo $dato['IdProducto']?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                             Ver
                         </a>
                     </div>
@@ -28,11 +28,11 @@ include "../Recursos/Conexion.php";
                     <div class="block2-txt flex-w flex-t p-t-14">
                         <div class="block2-txt-child1 flex-col-l ">
                             <span class="stext-105 cl3">
-                                <?php echo $imagen['NombeProducto']?>                            
+                                <?php echo $dato['NombeProducto']?>                            
                             </span>
 
                             <span class="stext-105 cl3">
-                                $ <?php echo $imagen['PrecioDescuento']?>                            
+                                $ <?php echo $dato['PrecioDescuento']?>                            
                             </span>
                         </div>
 
