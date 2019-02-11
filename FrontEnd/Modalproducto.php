@@ -1,5 +1,5 @@
 <?php  
-    include "../Recursos/Conexion.php"; 
+    //include "../Recursos/Conexion.php"; 
    /* $id=$_POST['producto'];
     $sql= $pdo->prepare("SELECT p.NombeProducto, p.PrecioDescuento, p.IdCategoria, i.Portada from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto WHERE IdProducto= $id");
     $sql->execute();
@@ -10,9 +10,9 @@
             exit;
         }
         echo 'error';
-        exit;*/
+        exit;
     $id=$_POST['producto'];
     $pd=$_POST['pdescuento'];
-    $img=$_POST['portada'];
+    $img=$_POST['portada'];*/
     
 ?>

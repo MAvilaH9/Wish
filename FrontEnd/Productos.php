@@ -7,7 +7,7 @@
         <div class="row isotope-grid">
             <?php
                 include "../Recursos/Conexion.php";
-                $sql= $pdo->prepare("SELECT p.IdProducto, p.NombeProducto, p.PrecioDescuento, p.IdCategoria, i.Portada from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto;");
+                $sql= $pdo->prepare("SELECT p.IdProducto, p.NombeProducto, p.PrecioDescuento, p.IdCategoria, i.Portada from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto");
 				$sql->execute();
 				$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 			?>
@@ -18,7 +18,7 @@
                     <div class="block2-pic hov-img0">
                         <img src="../FrontEnd/imgProductos/<?php echo $imagen['Portada']?>.jpg" alt="IMG-PRODUCT">
 
-                        <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1" IdProducto="<?php echo $imagen['IdProducto']?>" PrecioDescuento="<?php echo $imagen['PrecioDescuento']?>" Portada="<?php echo $imagen['Portada']?>">
+                        <a href="#" Producto="<?php echo $imagen['IdProducto'];?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                             Ver
                         </a>
                     </div>
@@ -46,8 +46,6 @@
             <?php endforeach ?>
         </div>
         
-        
-
         <!-- Load more -->
         <div class="flex-c-m flex-w w-full p-t-45">
             <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">

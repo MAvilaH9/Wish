@@ -268,23 +268,34 @@
     
     /*==================================================================
     [ Show modal1 ]*/
-    $('.js-show-modal1').on('click',function(e){
+    $('.js-show-modal1').click(function(e){
         e.preventDefault();
-        var producto = $(this).attr('IdProducto');
-        var pdescuento = $(this).attr('PrecioDescuento');
-
+        var producto = $(this).attr('Producto');
+        var action= 'InfoProducto';
         $.ajax({
-            url: 'Modalproducto.php',
             type: 'POST',
-            async: true,            
-            data: {producto:producto,pdescuento:pdescuento},
-        
-        })
-        .done(function(){
-            $('h4').html(producto);
-            $('.span').html(pdescuento);
-        })
+            url: 'Modal.php',
+            async: true,
+            data: {action:action,producto:producto},
 
+
+            success: function (response) {
+
+                if (response != 'error') {
+                    
+                    var info=JSON.parse(response);
+                    $('#IdPro').val(info.IdProducto);
+                    $('.nombre').html(info.NombeProducto);
+                    $('.precioproducto').html(info.PrecioDescuento);
+                }
+
+            },
+
+            error: function (error){
+                console.log(error);
+            }
+            
+        });
         $('.js-modal1').addClass('show-modal1');
     });
 

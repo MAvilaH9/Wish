@@ -204,10 +204,9 @@
 					
 					<div class="col-md-6 col-lg-5 p-b-30">
 						<div class="p-r-50 p-t-5 p-lr-0-lg">
-							<h4 >
-							</h4>
-
-							<span class="mtext-106 cl2 span">
+							<h4 class="nombre"></h4>
+							<input type="hidden" id="IdPro" name="IdPro" required>
+							<span class="mtext-106 cl2 precioproducto">
 								$58.79
 							</span>
 
