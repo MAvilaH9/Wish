@@ -34,7 +34,7 @@
 					<span class="login100-form-title">
 						Inicio de Sesion 
 					</span>
-
+					
 					<div class="wrap-input100 validate-input" data-validate = "Valide su correo: ex@abc.xyz">
 						<input class="input100" type="text" name="Correo" placeholder="Correo">
 						<span class="focus-input100"></span>

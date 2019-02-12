@@ -150,7 +150,7 @@
 		</span>
 	</div>
 
-	<!-- Modal1 Info del producto -->
+	<!-- Modal1 Info del producto 
 	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
 		<div class="overlay-modal1 js-hide-modal1"></div>
 
@@ -214,7 +214,7 @@
 								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
 							</p>
 							
-							<!--  -->
+							
 							<div class="p-t-33">
 								<div class="flex-w flex-r-m p-b-10">
 									<div class="size-203 flex-c-m respon6">
@@ -275,7 +275,7 @@
 								</div>	
 							</div>
 
-							<!--  -->
+							
 							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
 								<div class="flex-m bor9 p-r-10 m-r-11">
 									<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
@@ -300,7 +300,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>-->
 
 <!--===============================================================================================	-->
 	<script src="js/jquery-3.2.1.min.js"></script>
@@ -379,7 +379,7 @@
 		$('.js-addcart-detail').each(function(){
 			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
 			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
+				swal(nameProduct, "Producto agregado al carrito !", "con exito");
 			});
 		});
 	

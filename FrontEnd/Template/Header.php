@@ -1,5 +1,7 @@
 <?php
 session_start();
+include "../Recursos/Conexion.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,6 +96,7 @@ session_start();
 							</li>
 						</ul>
 					</div>
+					<!-- Menu Usuario -->
 					<div class="wrap-icon-header flex-w flex-r-m">
 									
 						<ul class="main-menu">
@@ -102,7 +105,7 @@ session_start();
 								<ul class="sub-menu">
 									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
 									<li><a href="#">Lista de Deseos</a></li> 
-									<li><a href="#">Carrito de Compras</a></li> <hr>
+									<li><a href="../FrontEnd/Carrito.php?IdCliente=<?php echo $_SESSION['IdCliente']?>">Carrito de Compras</a></li> <hr>
 									<li><a href="#">Historial de Pedidos</a></li>
 									<li><a href="#">Wish Cash</a></li>
 									<li><a href="#">Recompensas</a></li><hr>
@@ -121,6 +124,7 @@ session_start();
 						</a>
 					</div>	
 				</nav>
+				<!-- Boton Buscar -->
 				<div class="container">
 					<div class="flex-w flex-sb-m p-b-52">
 					
@@ -239,53 +243,29 @@ session_start();
 			
 			<div class="header-cart-content flex-w js-pscroll">
 				<ul class="header-cart-wrapitem w-full">
+					<?php 
+						$IdCliente =$_SESSION['IdCliente'];
+						$sql= $pdo->prepare("SELECT p.NombreProducto, p.PrecioDescuento, i.Portada, c.IdCarrito, cl.IdCliente from carrito c inner join producto p on c.IdProducto=p.IdProducto inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto inner join cliente cl on cl.IdCliente=c.IdCliente where cl.IdCliente=$IdCliente");
+						$sql->execute();
+						$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
+					?>
+					<?php foreach ($resultado as $dato):?>
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="images/item-cart-01.jpg" alt="IMG">
+							<img src="../FrontEnd/imgProductos/<?php echo $dato['Portada']?>.jpg" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
 							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								White Shirt Pleat
+								<?php echo $dato['NombreProducto'] ?>
 							</a>
 
 							<span class="header-cart-item-info">
-								1 x $19.00
+							<?php echo $dato['PrecioDescuento'] ?>
 							</span>
 						</div>
 					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-02.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Converse All Star
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $39.00
-							</span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-03.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Nixon Porter Leather
-							</a>
-
-							<span class="header-cart-item-info">
-								1 x $17.00
-							</span>
-						</div>
-					</li>
+					<?php endforeach?>
 				</ul>
 				
 				<div class="w-full">
@@ -294,11 +274,11 @@ session_start();
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
-						<a href="Carrito.php" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							View Cart
+						<a href="../FrontEnd/Carrito.php?IdCliente=<?php echo $_SESSION['IdCliente']?>" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+							Ver Carrito
 						</a>
 
-						<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+						<a href="#" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
 							Check Out
 						</a>
 					</div>

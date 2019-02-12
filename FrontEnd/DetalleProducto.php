@@ -12,12 +12,13 @@ include "../Recursos/Conexion.php";
                     <button class="how-pos3 hov3 trans-04 js-hide-modal1">
                         <img src="images/icons/icon-close.png" alt="CLOSE">
                     </button>
-                    <?php  
-                        $IdProducto= $_GET['IdProducto'];
-                        $sql= $pdo->prepare("SELECT p.IdProducto, p.NombeProducto, p.PrecioDescuento, p.Descripcion, p.IdCategoria, i.Portada from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto where IdProducto=$IdProducto");
+                    <?php
+                        $IdProducto=$_GET['IdProducto'];
+                        $sql= $pdo->prepare("SELECT p.IdProducto, p.NombreProducto, p.PrecioDescuento, p.Descripcion, p.IdCategoria, p.IdVendedor, i.Portada, c.NombreCaracteristica, v.Valor from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto inner join caracteristicas c  on c.IdProducto=p.IdProducto inner join valor v on v.IdCaracteristicas=c.IdCaracteristicas where p.IdProducto=$IdProducto");
                         $sql->execute();
                         $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                         foreach ($resultado as $dato) {
+                            # code...
                         }
                     ?>
 
@@ -30,7 +31,7 @@ include "../Recursos/Conexion.php";
                                         <!-- Imagen principal -->
 
                                     <div class="slick3 gallery-lb">
-                                        <div class="item-slick3" data-thumb="images/product-detail-01.jpg">
+                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $dato['Portada']?>.jpg">
                                             <div class="wrap-pic-w pos-relative">
                                                 <img src="../FrontEnd/imgProductos/<?php echo $dato['Portada']?>.jpg" alt="IMG-PRODUCT">
 
@@ -67,7 +68,7 @@ include "../Recursos/Conexion.php";
 
                         <div class="col-md-6 col-lg-5 p-b-30">
                             <div class="p-r-50 p-t-5 p-lr-0-lg">
-                                <h4> <?php echo $dato['NombeProducto']?> </h4>
+                                <h4> <?php echo $dato['NombreProducto']?> </h4>
                                 
                                 <span class="mtext-106 cl2 precioproducto">
                                     $<?php echo $dato['PrecioDescuento'] ?>
@@ -79,39 +80,21 @@ include "../Recursos/Conexion.php";
                                 
                                 <!--  -->
                                 <div class="p-t-33">
-                                    <div class="flex-w flex-r-m p-b-10">
+                                <div class="flex-w flex-r-m p-b-10">
                                         <div class="size-203 flex-c-m respon6">
-                                            Size
+                                            <?php echo $dato['NombreCaracteristica'] ?>
                                         </div>
 
                                         <div class="size-204 respon6-next">
                                             <div class="rs1-select2 bor8 bg0">
-                                                <select class="js-select2" name="time">
-                                                    <option>Choose an option</option>
-                                                    <option>Size S</option>
-                                                    <option>Size M</option>
-                                                    <option>Size L</option>
-                                                    <option>Size XL</option>
-                                                </select>
-                                                <div class="dropDownSelect2"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex-w flex-r-m p-b-10">
-                                        <div class="size-203 flex-c-m respon6">
-                                            Color
-                                        </div>
-
-                                        <div class="size-204 respon6-next">
-                                            <div class="rs1-select2 bor8 bg0">
-                                                <select class="js-select2" name="time">
-                                                    <option>Choose an option</option>
-                                                    <option>Red</option>
-                                                    <option>Blue</option>
-                                                    <option>White</option>
-                                                    <option>Grey</option>
-                                                </select>
+                                                <?php 
+                                                echo '<select class="js-select2" name="time">';
+                                                echo '<option>Seleccione</option>';
+                                                foreach ($resultado as $dato) {
+                                                    echo '<option value="'.$dato['IdValor'].'">'.$dato['Valor'].'</option>';
+                                                }
+                                                echo'</select>';
+                                                ?>
                                                 <div class="dropDownSelect2"></div>
                                             </div>
                                         </div>
@@ -130,10 +113,9 @@ include "../Recursos/Conexion.php";
                                                     <i class="fs-16 zmdi zmdi-plus"></i>
                                                 </div>
                                             </div>
-
-                                            <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                                Agregar al Carrito
-                                            </button>
+                                            <a href="../Recursos/Carrito.php?IdProducto=<?php echo $dato['IdProducto'] ?>&IdVendedor=<?php echo $dato['IdVendedor']?>" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Agregar al Carrito</a>
+                                            <br> <br> <br> <br> 
+                                            <a href="Index.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Cancelar</a>
                                         </div>
                                     </div>	
                                 </div>

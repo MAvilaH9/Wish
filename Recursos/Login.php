@@ -6,8 +6,7 @@ require_once ('Conexion.php');
 $correo = $_POST['Correo'];
 $contrasenia = $_POST['Contrasenia'];
 
-$sql = 'SELECT * FROM usuario WHERE Correo = ?';
-//$sql = 'SELECT * FROM usuario WHERE correoUsuario = ?';
+$sql = 'SELECT u.IdUsuario, u.NombreUsuario, u.Apellidos, u.Correo, u.Contrasenia, u.IdPerfil, c.IdCliente from usuario u inner join cliente c on u.IdUsuario=c.IdUsuario where u.Correo =?';
 $sentencia = $pdo->prepare($sql);
 $sentencia->execute(array($correo));
 $resultado = $sentencia->fetch();
@@ -19,28 +18,6 @@ if (!$resultado) {
     die();
 }
 
-/*
-
-if ($contrasenia == $resultado['contraseniaUsuario']  && $resultado['correoUsuario'] == $correo){
-
-    $_SESSION['Nombre_Usuario'] = $resultado['nombreUsuario']; 
-    $_SESSION['Apellidos'] = $resultado['apellidosUsuario']; 
-    $_SESSION['IdPerfil'] = $resultado['idPerfil']; 
-    $_SESSION['Correo'] = $resultado['correoUsuario']; 
-
-    if($resultado['idPerfil'] == 3){
-        header('location:../FrontEnd/Index.php');
-    }
-    
-    if($resultado['idPerfil'] = 2){
-       // header('location:../FrontEnd/Carrito.php');    
-    }
-  
-}
-else{
-    //header('location:../FrontEnd/Index.php');
-}
-*/
 
 if ($contrasenia == $resultado['Contrasenia']  && $resultado['Correo'] == $correo){
 
@@ -48,6 +25,7 @@ if ($contrasenia == $resultado['Contrasenia']  && $resultado['Correo'] == $corre
     $_SESSION['Apellidos'] = $resultado['Apellidos']; 
     $_SESSION['IdPerfil'] = $resultado['IdPerfil']; 
     $_SESSION['Correo'] = $resultado['Correo']; 
+    $_SESSION['IdCliente']=$resultado['IdCliente'];
 
     if($resultado['IdPerfil'] == 3){
         header('location:../FrontEnd/Index.php');
