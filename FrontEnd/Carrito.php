@@ -31,8 +31,8 @@ include "../Recursos/Conexion.php";
 									<th class="column-5">Total</th>
 								</tr>
 								<?php 
-										$IdCliente =$_GET['IdCliente'];
-										$sql= $pdo->prepare("SELECT p.NombreProducto, p.PrecioDescuento, i.Portada, c.IdCarrito, cl.IdCliente from carrito c inner join producto p on c.IdProducto=p.IdProducto inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto inner join cliente cl on cl.IdCliente=c.IdCliente where cl.IdCliente=$IdCliente");
+										$IdUsuario =$_GET['IdUsuario'];
+										$sql= $pdo->prepare("SELECT p.NombreProducto, p.PrecioDescuento, i.Portada, c.IdCarrito, u.IdUsuario from carrito c inner join producto p on c.IdProducto=p.IdProducto inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto inner join usuario u on u.IdUsuario=c.IdUsuario where u.IdUsuario=$IdUsuario");
 										$sql->execute();
 										$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 								?>

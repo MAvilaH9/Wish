@@ -105,7 +105,7 @@ include "../Recursos/Conexion.php";
 								<ul class="sub-menu">
 									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
 									<li><a href="#">Lista de Deseos</a></li> 
-									<li><a href="../FrontEnd/Carrito.php?IdCliente=<?php echo $_SESSION['IdCliente']?>">Carrito de Compras</a></li> <hr>
+									<li><a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $_SESSION['IdUsuario'] ?>">Carrito de Compras</a></li> <hr>
 									<li><a href="#">Historial de Pedidos</a></li>
 									<li><a href="#">Wish Cash</a></li>
 									<li><a href="#">Recompensas</a></li><hr>
@@ -244,8 +244,8 @@ include "../Recursos/Conexion.php";
 			<div class="header-cart-content flex-w js-pscroll">
 				<ul class="header-cart-wrapitem w-full">
 					<?php 
-						$IdCliente =$_SESSION['IdCliente'];
-						$sql= $pdo->prepare("SELECT p.NombreProducto, p.PrecioDescuento, i.Portada, c.IdCarrito, cl.IdCliente from carrito c inner join producto p on c.IdProducto=p.IdProducto inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto inner join cliente cl on cl.IdCliente=c.IdCliente where cl.IdCliente=$IdCliente");
+						$IdUsuario =$_SESSION['IdUsuario'];
+						$sql= $pdo->prepare("SELECT p.NombreProducto, p.PrecioDescuento, i.Portada, c.IdCarrito, u.IdUsuario from carrito c inner join producto p on c.IdProducto=p.IdProducto inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto inner join usuario u on u.IdUsuario=c.IdUsuario where u.IdUsuario=$IdUsuario");
 						$sql->execute();
 						$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 					?>
@@ -274,7 +274,7 @@ include "../Recursos/Conexion.php";
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
-						<a href="../FrontEnd/Carrito.php?IdCliente=<?php echo $_SESSION['IdCliente']?>" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+						<a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $IdUsuario?>" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							Ver Carrito
 						</a>
 

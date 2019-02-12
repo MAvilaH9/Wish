@@ -33,6 +33,7 @@ if ($sentencia_agregar->execute(array($Nombre_Usuario, $Apellidos, $Correo, $Con
     $_SESSION['Apellidos'] = $resultado['Apellidos'];
     $_SESSION['IdPerfil'] = $resultado['IdPerfil'];
     $_SESSION['Correo'] = $resultado['Correo'];
+    $_SESSION['IdUsuario']= $resultado['IdUsuario'];
 
 
     if ($IdPerfil == 3) {

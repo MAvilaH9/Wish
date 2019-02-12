@@ -1,5 +1,5 @@
 <?php
-$link = 'mysql:host=localhost;dbname=bdwish';
+$link = 'mysql:host=localhost;dbname=wishbd';
 $usuario = 'root';
 $pass = '';
 try{
