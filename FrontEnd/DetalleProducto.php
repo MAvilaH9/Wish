@@ -168,18 +168,23 @@ include "../Recursos/Conexion.php";
                                     ?>
                                     <div class="flex-w flex-r-m p-b-10">
                                         <div class="size-203 flex-c-m respon6">
-                                            <?php echo $dato['NombreCaracteristica'];?>
+                                        <?php
+                                            if (!empty($dato['NombreCaracteristica'])) {?>
+                                                <?php echo $dato['NombreCaracteristica'];?> 
+                                            <?php } ?>
                                         </div>
 
                                         <div class="size-204 respon6-next">
                                             <div class="rs1-select2 bor8 bg0">
                                                 <?php 
-                                                echo '<select class="js-select2" name="time">';
-                                                echo '<option>Seleccione</option>';
-                                                foreach ($resultado as $dato) {
-                                                    echo '<option value="'.$dato['IdValor'].'">'.$dato['Valor'].'</option>';
-                                                }
+                                                if (!empty($dato['NombreCaracteristica'])){
+                                                    echo '<select class="js-select2" name="time">';
+                                                    echo '<option>Seleccione</option>';
+                                                    foreach ($resultado as $dato) {
+                                                        echo '<option value="'.$dato['IdValor'].'">'.$dato['Valor'].'</option>';
+                                                    }
                                                 echo'</select>';
+                                                }
                                                 ?>
                                                 <div class="dropDownSelect2"></div>
                                             </div>
