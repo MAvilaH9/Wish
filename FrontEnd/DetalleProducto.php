@@ -44,13 +44,13 @@ include "../Recursos/Conexion.php";
                             
                                     <div class="slick3 gallery-lb">
                                         <!-- Imagen principal -->
-                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Portada']?>.jpg">
+                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Portada'];?>.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="../FrontEnd/imgProductos/<?php echo $resultado['Portada']?>.jpg"
+                                                <img src="../FrontEnd/imgProductos/<?php echo $resultado['Portada'];?>.jpg"
                                                     alt="IMG-PRODUCT">
 
                                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                                    href="../FrontEnd/imgProductos/<?php echo $resultado['Portada']?>.jpg">
+                                                    href="../FrontEnd/imgProductos/<?php echo $resultado['Portada'];?>.jpg">
                                                     <i class="fa fa-expand"></i>
                                                 </a>
                                             </div>
@@ -58,13 +58,13 @@ include "../Recursos/Conexion.php";
                                         <!-- Imagen 1-->
                                         <?php
                                         if(!empty($resultado['Imagen1'])){?>
-                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen1']?>.jpg">
+                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen1'];?>.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen1']?>.jpg"
+                                                <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen1'];?>.jpg"
                                                     alt="IMG-PRODUCT">
 
                                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                                    href="../FrontEnd/imgProductos/<?php echo $resultado['Imagen1']?>.jpg">
+                                                    href="../FrontEnd/imgProductos/<?php echo $resultado['Imagen1'];?>.jpg">
                                                     <i class="fa fa-expand"></i>
                                                 </a>
                                             </div>
@@ -76,13 +76,13 @@ include "../Recursos/Conexion.php";
                                         <!-- Imagen 2 -->
                                         <?php
                                         if (!empty($resultado['Imagen2'])){ ?>
-                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen2']?>.jpg">
+                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen2'];?>.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen2']?>.jpg"
+                                                <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen2'];?>.jpg"
                                                     alt="IMG-PRODUCT">
 
                                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                                    href="../FrontEnd/imgProductos/<?php echo $resultado['Imagen2']?>.jpg">
+                                                    href="../FrontEnd/imgProductos/<?php echo $resultado['Imagen2'];?>.jpg">
                                                     <i class="fa fa-expand"></i>
                                                 </a>
                                             </div>
@@ -92,13 +92,13 @@ include "../Recursos/Conexion.php";
                                         <!-- Imagen 3 -->
                                         <?php
                                         if (!empty($resultado['Imagen3'])) { ?>
-                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen3']?>.jpg">
+                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen3'];?>.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen3']?>.jpg"
+                                                <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen3'];?>.jpg"
                                                     alt="IMG-PRODUCT">
 
                                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                                    href="../FrontEnd/imgProductos/<?php echo $resultado['Imagen3']?>.jpg">
+                                                    href="../FrontEnd/imgProductos/<?php echo $resultado['Imagen3'];?>.jpg">
                                                     <i class="fa fa-expand"></i>
                                                 </a>
                                             </div>
@@ -108,13 +108,13 @@ include "../Recursos/Conexion.php";
                                          <!-- Imagen 4 -->
                                          <?php
                                         if (!empty($resultado['Imagen4'])){ ?>
-                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen4']?>.jpg">
+                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen4'];?>.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen4']?>.jpg"
+                                                <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen4'];?>.jpg"
                                                     alt="IMG-PRODUCT">
 
                                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                                    href="../FrontEnd/imgProductos/<?php echo $resultado['Imagen4']?>.jpg">
+                                                    href="../FrontEnd/imgProductos/<?php echo $resultado['Imagen4'];?>.jpg">
                                                     <i class="fa fa-expand"></i>
                                                 </a>
                                             </div>
@@ -124,13 +124,13 @@ include "../Recursos/Conexion.php";
                                          <!-- Imagen 5 -->
                                          <?php
                                         if (!empty($resultado['Imagen5'])){ ?>
-                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen5']?>.jpg">
+                                        <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen5'];?>.jpg">
                                             <div class="wrap-pic-w pos-relative">
-                                                <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen5']?>.jpg"
+                                                <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen5'];?>.jpg"
                                                     alt="IMG-PRODUCT">
 
                                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                                    href="../FrontEnd/imgProductos/<?php echo $resultado['Imagen5']?>.jpg">
+                                                    href="../FrontEnd/imgProductos/<?php echo $resultado['Imagen5'];?>.jpg">
                                                     <i class="fa fa-expand"></i>
                                                 </a>
                                             </div>
@@ -145,16 +145,15 @@ include "../Recursos/Conexion.php";
                         <div class="col-md-6 col-lg-5 p-b-30">
                             <div class="p-r-50 p-t-5 p-lr-0-lg">
                                 <h4>
-                                    <?php echo $resultado['NombreProducto']?>
+                                    <?php echo $resultado['NombreProducto'];?>
                                 </h4>
 
                                 <span class="mtext-106 cl2 precioproducto">
-                                    $
-                                    <?php echo $resultado['PrecioDescuento'] ?>
+                                    $<?php echo $resultado['PrecioDescuento'];?>
                                 </span>
 
                                 <p class="stext-102 cl3 p-t-23">
-                                    <?php echo $resultado['Descripcion'] ?>
+                                    <?php echo $resultado['Descripcion'];?>
                                 </p>
 
                                 <!-- Caracteristicas y Valores -->
@@ -169,7 +168,7 @@ include "../Recursos/Conexion.php";
                                     ?>
                                     <div class="flex-w flex-r-m p-b-10">
                                         <div class="size-203 flex-c-m respon6">
-                                            <?php echo $dato['NombreCaracteristica'] ?>
+                                            <?php echo $dato['NombreCaracteristica'];?>
                                         </div>
 
                                         <div class="size-204 respon6-next">
@@ -189,23 +188,27 @@ include "../Recursos/Conexion.php";
 
                                     <div class="flex-w flex-r-m p-b-10">
                                         <div class="size-204 flex-w flex-m respon6-next">
+                                            <form action="../Recursos/Carrito.php" method="Post">
+
                                             <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                                 <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                                     <i class="fs-16 zmdi zmdi-minus"></i>
                                                 </div>
 
-                                                <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product"
+                                                <input class="mtext-104 cl3 txt-center num-product" type="number" name="cantidad"
                                                     value="1">
 
                                                 <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                                     <i class="fs-16 zmdi zmdi-plus"></i>
                                                 </div>
                                             </div>
-                                            <a href="../Recursos/Carrito.php?IdProducto=<?php echo $dato['IdProducto'] ?>&IdVendedor=<?php echo $dato['IdVendedor']?>"
-                                                class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Agregar
-                                                al Carrito</a>
-                                            <br> <br> <br> <br>
-                                            <a href="Index.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Cancelar</a>
+                                                <input type="hidden" name="IdProducto" value="<?php echo $dato['IdProducto'];?>">
+                                                <input type="hidden" name="IdVendedor" value="<?php echo $dato['IdVendedor'];?>">
+                                                <br>
+                                                <input type="submit" value="Agregar al Carrito" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                                <br> 
+                                                <a href="Index.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Cancelar</a>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

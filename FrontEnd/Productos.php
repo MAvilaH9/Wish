@@ -16,11 +16,11 @@
                 <!-- Block2 -->
                 <div class="block2">
                     <div class="block2-pic hov-img0">
-                        <img src="../FrontEnd/imgProductos/<?php echo $dato['Portada']?>.jpg" alt="IMG-PRODUCT">
-                        <a href="DetalleProducto.php?IdProducto=<?php echo $dato['IdProducto']?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                        <img src="../FrontEnd/imgProductos/<?php echo $dato['Portada'];?>.jpg" alt="IMG-PRODUCT">
+                        <a href="DetalleProducto.php?IdProducto=<?php echo $dato['IdProducto'];?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                             Ver
                         </a>
-                        <!--<a href="#" Producto="<?php echo $dato['IdProducto'];?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                        <!--<a href="#" Producto="<?php // echo $dato['IdProducto'];?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                             Ver -->
                         </a>
                     </div>
@@ -28,11 +28,11 @@
                     <div class="block2-txt flex-w flex-t p-t-14">
                         <div class="block2-txt-child1 flex-col-l ">
                             <span class="stext-105 cl3">
-                                <?php echo $dato['NombreProducto']?>                            
+                                <?php echo $dato['NombreProducto'];?>                            
                             </span>
 
                             <span class="stext-105 cl3">
-                                $ <?php echo $dato['PrecioDescuento']?>                            
+                                $ <?php echo $dato['PrecioDescuento'];?>                            
                             </span>
                         </div>
 
