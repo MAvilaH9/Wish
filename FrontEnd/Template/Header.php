@@ -1,7 +1,10 @@
 <?php
 session_start();
 include "../Recursos/Conexion.php";
-
+$IdUsuario=$_SESSION['IdUsuario'];
+$sql = $pdo->prepare('SELECT count(IdCarrito) as Cantidad from carrito where IdUsuario=?');
+$sql -> execute(array($IdUsuario));
+$resultado = $sql->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,7 +119,7 @@ include "../Recursos/Conexion.php";
 							</li>
 						</ul>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<?php echo (empty($_SESSION['Carrito']))?0:count($_SESSION['Carrito']);?>">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<?php echo $resultado['Cantidad'];?>">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
@@ -141,7 +144,7 @@ include "../Recursos/Conexion.php";
 								<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
 								<i class="zmdi zmdi-search"></i>
 								</button>
-								<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Buscar">
+								<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="Producto" placeholder="Buscar">
 							</div>	
 						</div>
 					</div>
@@ -162,21 +165,26 @@ include "../Recursos/Conexion.php";
 			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
 
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10">
-					<a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?></a>
-					<ul class="sub-menu">
-						<li><a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
-						<li><a href="#">Lista de Deseos</a></li> 
-						<li><a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $_SESSION['IdUsuario'] ?>">Carrito de Compras</a></li> <hr>
-						<li><a href="#">Historial de Pedidos</a></li>
-						<li><a href="#">Wish Cash</a></li>
-						<li><a href="#">Recompensas</a></li><hr>
-						<li><a href="#">Preguntas Frecuentes</a></li>
-						<li><a href="#">Configuración</a></li>
-						<li><a href="../Recursos/Logout.php">Salir</a></li>
+					<ul class="main-menu">
+						<li>
+							<a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?></a>
+							<ul class="sub-menu">
+								<li><a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
+								<li><a href="#">Lista de Deseos</a></li> 
+								<li><a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $_SESSION['IdUsuario'] ?>">Carrito de Compras</a></li> <hr>
+								<li><a href="#">Historial de Pedidos</a></li>
+								<li><a href="#">Wish Cash</a></li>
+								<li><a href="#">Recompensas</a></li><hr>
+								<li><a href="#">Preguntas Frecuentes</a></li>
+								<li><a href="#">Configuración</a></li>
+								<li><a href="../Recursos/Logout.php">Salir</a></li>
+							</ul>
+						</li>
 					</ul>
+
 				</div>
 
-				<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="<?php echo (empty($_SESSION['Carrito']))?0:count($_SESSION['Carrito']);?>">
+				<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="<?php echo $resultado['Cantidad'];?>">
 					<i class="zmdi zmdi-shopping-cart"></i>
 				</a>
 			</div>

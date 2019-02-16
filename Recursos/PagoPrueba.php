@@ -98,7 +98,7 @@ $status = "Pendiente";
                                 payment: {
                                     transactions: [{
                                         amount: {   total: '<?php echo $total; ?>', currency: 'MXN'  },
-                                        description:"Compra de planes a Philosopy:$<?php echo $total; ?>",
+                                        description:"Compra de planes a Philosopy:$<?php echo number_format($total,2); ?>",
                                         custom:"<?php echo $sid;?>#<?php echo ($idventa); ?> "
                                       
                                     }]

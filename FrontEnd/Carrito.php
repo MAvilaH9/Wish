@@ -16,7 +16,7 @@ include "../Recursos/Conexion.php";
 	</div>
 </div>
 <!-- Shoping Cart -->
-<form class="bg0 p-t-75 p-b-85" action="../Recursos/Pagar.php" method="Post">
+<form class="bg0 p-t-75 p-b-85" action="../FrontEnd/Pagar.php" method="Post">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
@@ -33,7 +33,7 @@ include "../Recursos/Conexion.php";
 							</tr>
 							<?php 
 								$IdUsuario =$_GET['IdUsuario'];
-								$sql= $pdo->prepare("SELECT p.NombreProducto, c.Cantidad, p.PrecioDescuento, i.Portada, c.IdCarrito, u.IdUsuario from carrito c inner join producto p on c.IdProducto=p.IdProducto inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto inner join usuario u on u.IdUsuario=c.IdUsuario where u.IdUsuario=$IdUsuario");
+								$sql= $pdo->prepare("SELECT p.NombreProducto, p.IdVendedor, c.Cantidad, p.PrecioDescuento, i.Portada, c.IdCarrito, u.IdUsuario from carrito c inner join producto p on c.IdProducto=p.IdProducto inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto inner join usuario u on u.IdUsuario=c.IdUsuario inner join vendedor v on p.IdVendedor=v.IdVendedor where u.IdUsuario=$IdUsuario");
 								$sql->execute();
 								$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 							?>
@@ -43,6 +43,8 @@ include "../Recursos/Conexion.php";
 								<td class="column-1">
 									<div class="how-itemcart1">
 										<img src="../FrontEnd/imgProductos/<?php echo $dato['Portada']?>.jpg" alt="IMG">
+										<input type="hidden" name="IdVendedor" value="<?php echo $dato['IdVendedor'] ?>">
+										<input type="hidden" name="IdCarrito" value="<?php echo $dato['IdCarrito'] ?>">
 									</div>
 								</td>
 								<td class="column-2"><?php echo $dato['NombreProducto']?></td>
@@ -113,9 +115,9 @@ include "../Recursos/Conexion.php";
 					<input type="hidden" name="IdUsuario">
 					<input type="hidden" name="Cantidad" value="<?php echo $cant?>">
 					<input type="hidden" name="Total" value="<?php echo $total?>">
-					<!-- <input type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" value="Pagar"> -->
+					<input type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" value="Pagar">
 
-					<a href="RegDireccion.php" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Pagar</a>
+					<!-- <a href="RegDireccion.php" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Pagar</a> -->
 
 					<!-- <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 						Pagar
