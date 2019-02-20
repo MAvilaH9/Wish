@@ -210,13 +210,19 @@ include "../Recursos/Conexion.php";
                                                 <input type="hidden" name="IdProducto" value="<?php echo $dato['IdProducto'];?>">
                                                 <input type="hidden" name="IdVendedor" value="<?php echo $dato['IdVendedor'];?>">
                                                 <br>
-                                                <input type="submit" value="Agregar al Carrito" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                                <input type="submit" value="Agregar al Carrito" onclick="funcionAlerta()" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                                 <br> 
                                                 <a href="Index.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Cancelar</a>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
+
+                                <script>
+                                    function funcionAlerta(){
+                                        alert("Producto agregado al carrito");
+                                    }
+                                </script>
 
                                 <!--  -->
                                 <div class="flex-w flex-m p-l-100 p-t-40 respon7">

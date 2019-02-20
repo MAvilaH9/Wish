@@ -12,9 +12,14 @@ $resultado = $sql->fetch();
 	<title>Wish</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
+
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/w.jpg"/>
 <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/sweetalert2.scss">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
