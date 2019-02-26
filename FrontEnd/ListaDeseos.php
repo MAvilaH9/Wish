@@ -1,4 +1,4 @@
-
+<?php include "Template/Header.php"; ?>
 <!-- Product -->
 <br> <br> <br> <br> <br> <br>
 <section class="bg0 p-t-23 p-b-140" id="Producto">
@@ -7,7 +7,7 @@
         <div class="row isotope-grid">
             <?php
                 include "../Recursos/Conexion.php";
-                $sql= $pdo->prepare("SELECT p.IdProducto, p.NombreProducto, p.PrecioDescuento, p.IdCategoria, i.Portada from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto");
+                $sql= $pdo->prepare("SELECT l.IdWishList, p.NombreProducto, p.PrecioDescuento, p.IdCategoria, i.Portada from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto inner join wishlist l on p.IdProducto=l.IdProducto  where IdUsuario=1");
 				$sql->execute();
 				$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 			?>
@@ -35,11 +35,9 @@
                                 $ <?php echo $dato['PrecioDescuento'];?>                            
                             </span>
                         </div>
-                        
+
                         <div class="block2-txt-child2 flex-r p-t-3">
-                            <a href="../Recursos/AgregarLista.php?IdProducto=<?php echo $dato['IdProducto'];?>" class="btn-addwish-b2 dis-block pos-relative" title="Agregar a lista de deseos">
-                                <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
+                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
                             </a>
                         </div>
                     </div>
@@ -57,3 +55,4 @@
     </div>
 </section>
 
+<?php include "Template/Footer.php";?>

@@ -65,8 +65,8 @@ $resultado = $sql->fetch();
 					<!-- Menu desktop -->
 					<div class="menu-desktop">	
 						<ul class="main-menu">
-							<li class="active-menu">
-								<a href="#"><b>Popular</b></a>
+							<li>
+								<a href="Index.php"><b>Popular</b></a>
 							</li>
 
 							<li >
@@ -112,7 +112,7 @@ $resultado = $sql->fetch();
 								<a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?></a>
 								<ul class="sub-menu">
 									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
-									<li><a href="#">Lista de Deseos</a></li> 
+									<li><a href="../FrontEnd/ListaDeseos.php">Lista de Deseos</a></li> 
 									<li><a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $_SESSION['IdUsuario'] ?>">Carrito de Compras</a></li> <hr>
 									<li><a href="#">Historial de Pedidos</a></li>
 									<li><a href="#">Wish Cash</a></li>
