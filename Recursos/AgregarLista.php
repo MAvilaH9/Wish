@@ -1,6 +1,8 @@
 <?php 
+
 session_start();
 require_once ('Conexion.php');
+
 $IdUsuario=$_SESSION['IdUsuario'];
 $nombre=$_SESSION['Nombre_Usuario'];
 $IdProducto=$_GET['IdProducto'];
@@ -15,4 +17,5 @@ if ($sentencia_agregar->execute(array($nombre,$IdProducto, $IdUsuario))) {
 } else {
     die();
 }
+
 ?>

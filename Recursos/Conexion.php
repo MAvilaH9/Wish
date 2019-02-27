@@ -2,6 +2,7 @@
 $link = 'mysql:host=localhost;dbname=wishbd';
 $usuario = 'root';
 $pass = '';
+
 try{
     $pdo = new PDO($link,$usuario,$pass);
     
@@ -9,4 +10,5 @@ try{
     print "¡Error!: " . $e->getMessage() . "<br/>";
     die($e -> getMessage());
 }
+
 ?>
