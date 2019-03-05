@@ -1,11 +1,19 @@
+<?php include "Template/Header.php"; ?>
 
-<!-- Product -->
 
 
 <section class="bg0 p-t-23 p-b-140" id="Producto">
     <div class="container">
-        <!-- Boton Buscar -->
-        <form action="Buscar.php" method="Get">
+    <?php
+        require_once ('../Recursos/Conexion.php');
+
+        $Producto=$_REQUEST['Producto'];
+
+        if (empty($Producto)) {
+            header("location: Index.php");
+        }
+    ?>
+        <form action="Buscar.php" method="Post">
             <div class="container">
                 <div class="flex-w flex-sb-m p-b-52">
 
@@ -22,7 +30,7 @@
                             <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
                                 <i class="zmdi zmdi-search"></i>
                             </button>
-                            <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" Id="Producto" name="Producto" placeholder="Buscar">
+                            <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="Producto" placeholder="Buscar" value="<?php echo $Producto; ?>">
                         </div>
                     </div>
                 </div>
@@ -32,7 +40,7 @@
         <div class="row isotope-grid">
             <?php
                 include "../Recursos/Conexion.php";
-                $sql= $pdo->prepare("SELECT p.IdProducto, p.NombreProducto, p.PrecioDescuento, p.IdCategoria, i.Portada from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto");
+                $sql= $pdo->prepare("SELECT p.IdProducto, p.NombreProducto, p.PrecioDescuento, p.IdCategoria, i.Portada from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto where p.NombreProducto LIKE '%$Producto%'");
 				$sql->execute();
 				$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 			?>
@@ -77,12 +85,7 @@
                 alert("Producto agregado a la lista de deseos");
             }
         </script> -->
-        <!-- Load more -->
-        <div class="flex-c-m flex-w w-full p-t-45">
-            <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
-                Load More
-            </a>
-        </div> <br> <br>
     </div>
 </section>
 
+<?php include "Template/Footer.php"; ?>

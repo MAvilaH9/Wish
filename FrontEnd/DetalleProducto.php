@@ -143,8 +143,8 @@ include "../Recursos/Conexion.php";
                         </div>
 
                         <div class="col-md-6 col-lg-5 p-b-30">
-                            <div class="p-r-50 p-t-5 p-lr-0-lg">
-                                <h4>
+                            <div class="p-r-50 p-t-5 p-lr-0-lgz">
+                                <h4 class="mtext-105 cl2 js-name-detail p-b-14">
                                     <?php echo $resultado['NombreProducto'];?>
                                 </h4>
 
@@ -210,19 +210,24 @@ include "../Recursos/Conexion.php";
                                                 <input type="hidden" name="IdProducto" value="<?php echo $dato['IdProducto'];?>">
                                                 <input type="hidden" name="IdVendedor" value="<?php echo $dato['IdVendedor'];?>">
                                                 <br>
-                                                <input type="submit" value="Agregar al Carrito" onclick="funcionAlerta()" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                                <input type="submit" value="Agregar al Carrito"  class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                                 <br> 
-                                                <a href="Index.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">Cancelar</a>
+                                                <a href="Index.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Cancelar</a>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
 
-                                <script>
-                                    function funcionAlerta(){
-                                        alert("Producto agregado al carrito");
-                                    }
-                                </script>
+                                <!-- <script>
+                                    function agregarCarrito(idProducto){
+                                            page=1;
+                                            var parametros = {"action":"ajax","page":page,"idProducto":idProducto};	
+                                            $.ajax({
+                                                url:'../modelo/inicioProductos.php',
+                                                data: parametros,
+                                            })
+                                        }
+                                </script> -->
 
                                 <!--  -->
                                 <div class="flex-w flex-m p-l-100 p-t-40 respon7">

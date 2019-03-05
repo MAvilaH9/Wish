@@ -29,8 +29,18 @@ if ($contrasenia == $resultado['Contrasenia']  && $resultado['Correo'] == $corre
 
     if($resultado['IdPerfil'] == 3){
         header('location:../FrontEnd/Index.php');
-    } else{
-        header('location:../BackEnd/Index.php');
-    }
+        
+    } 
+
+    // if($resultado['IdPerfil'] == 2){
+    //     header('location:../BackEnd/Index.php');
+    // }
+
+    // if($resultado['IdPerfil'] == 1){
+    //     header('location:../BackEnd/Index.php');
+    // }
+}
+else{
+    header('location:../FrontEnd/Login.php');
 }
 ?>

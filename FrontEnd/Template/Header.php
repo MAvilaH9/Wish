@@ -1,6 +1,19 @@
 <?php
 session_start();
 include "../Recursos/Conexion.php";
+if (isset($_SESSION['Nombre_Usuario'])) {
+
+	if ($_SESSION['IdPerfil'] == 3) {
+		
+	}
+
+	if ($_SESSION['IdPerfil'] == !3) {
+		header('location:../BackEnd/Index.php');
+	}
+
+}else{
+	header('location:Login.php');
+}
 $IdUsuario=$_SESSION['IdUsuario'];
 $sql = $pdo->prepare('SELECT count(IdCarrito) as Cantidad from carrito where IdUsuario=?');
 $sql -> execute(array($IdUsuario));
@@ -12,14 +25,9 @@ $resultado = $sql->fetch();
 	<title>Wish</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
-
-
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="images/w.jpg"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/sweetalert2.scss">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
@@ -114,11 +122,11 @@ $resultado = $sql->fetch();
 									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
 									<li><a href="../FrontEnd/ListaDeseos.php">Lista de Deseos</a></li> 
 									<li><a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $_SESSION['IdUsuario'] ?>">Carrito de Compras</a></li> <hr>
-									<li><a href="#">Historial de Pedidos</a></li>
+									<!-- <li><a href="#">Historial de Pedidos</a></li>
 									<li><a href="#">Wish Cash</a></li>
 									<li><a href="#">Recompensas</a></li><hr>
 									<li><a href="#">Preguntas Frecuentes</a></li>
-									<li><a href="#">Configuración</a></li>
+									<li><a href="#">Configuración</a></li> -->
 									<li><a href="../Recursos/Logout.php">Salir</a></li>
 								</ul>
 							</li>
@@ -132,28 +140,6 @@ $resultado = $sql->fetch();
 						</a>
 					</div>	
 				</nav>
-				<!-- Boton Buscar -->
-				<div class="container">
-					<div class="flex-w flex-sb-m p-b-52">
-					
-						<div class="flex-w flex-c-m m-tb-10">	
-							<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
-								<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
-								<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-								Buscar
-							</div>
-						</div>
-						<!-- Search product -->
-						<div class="dis-none panel-search w-full p-t-10 p-b-15">
-							<div class="bor8 dis-flex p-l-15">
-								<button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
-								<i class="zmdi zmdi-search"></i>
-								</button>
-								<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="Producto" placeholder="Buscar">
-							</div>	
-						</div>
-					</div>
-				</div>
 			</div>	
 		</div>
 

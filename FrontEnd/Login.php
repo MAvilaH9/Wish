@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (isset($_SESSION['nombre'])) {
+  header('location:index.php');
+}else{
+  
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,8 +84,6 @@
 		</div>
 	</div>
 	
-	
-
 	
 <!--===============================================================================================-->	
 	<script src="js/login/jquery-3.2.1.min.js"></script>
