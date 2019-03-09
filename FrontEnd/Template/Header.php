@@ -82,7 +82,7 @@ $resultado = $sql->fetch();
 							</li>
 
 							<li>
-								<a href="#"><b>Visualizado Recientemete</b></a>
+								<a href="Visualizado.php"><b>Visualizado Recientemete</b></a>
 							</li>
 
 							<li>
@@ -117,9 +117,9 @@ $resultado = $sql->fetch();
 									
 						<ul class="main-menu">
 							<li>
-								<a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?></a>
+								<a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?></a>
 								<ul class="sub-menu">
-									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
+									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
 									<li><a href="../FrontEnd/ListaDeseos.php">Lista de Deseos</a></li> 
 									<li><a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $_SESSION['IdUsuario'] ?>">Carrito de Compras</a></li> <hr>
 									<!-- <li><a href="#">Historial de Pedidos</a></li>

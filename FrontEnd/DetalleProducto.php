@@ -41,7 +41,7 @@ include "../Recursos/Conexion.php";
                                 <div class="wrap-slick3 flex-sb flex-w">
                                     <div class="wrap-slick3-dots"></div>
                                     <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-                            
+
                                     <div class="slick3 gallery-lb">
                                         <!-- Imagen principal -->
                                         <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Portada'];?>.jpg">
@@ -88,7 +88,7 @@ include "../Recursos/Conexion.php";
                                             </div>
                                         </div>
                                         <?php } ?>
-                                        
+
                                         <!-- Imagen 3 -->
                                         <?php
                                         if (!empty($resultado['Imagen3'])) { ?>
@@ -105,8 +105,8 @@ include "../Recursos/Conexion.php";
                                         </div>
                                         <?php } ?>
 
-                                         <!-- Imagen 4 -->
-                                         <?php
+                                        <!-- Imagen 4 -->
+                                        <?php
                                         if (!empty($resultado['Imagen4'])){ ?>
                                         <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen4'];?>.jpg">
                                             <div class="wrap-pic-w pos-relative">
@@ -121,8 +121,8 @@ include "../Recursos/Conexion.php";
                                         </div>
                                         <?php } ?>
 
-                                         <!-- Imagen 5 -->
-                                         <?php
+                                        <!-- Imagen 5 -->
+                                        <?php
                                         if (!empty($resultado['Imagen5'])){ ?>
                                         <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen5'];?>.jpg">
                                             <div class="wrap-pic-w pos-relative">
@@ -149,7 +149,8 @@ include "../Recursos/Conexion.php";
                                 </h4>
 
                                 <span class="mtext-106 cl2 precioproducto">
-                                    $<?php echo $resultado['PrecioDescuento'];?>
+                                    $
+                                    <?php echo $resultado['PrecioDescuento'];?>
                                 </span>
 
                                 <p class="stext-102 cl3 p-t-23">
@@ -160,7 +161,12 @@ include "../Recursos/Conexion.php";
                                 <div class="p-t-33">
                                     <?php 
                                     $IdProducto=$_GET['IdProducto'];
-                                    $sql= $pdo->prepare("SELECT p.IdProducto, p.NombreProducto, p.PrecioDescuento, p.Descripcion, p.IdCategoria, p.IdVendedor, i.Portada, c.NombreCaracteristica, v.Valor from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto inner join caracteristicas c  on c.IdProducto=p.IdProducto inner join valor v on v.IdCaracteristicas=c.IdCaracteristicas where p.IdProducto=$IdProducto");
+                                    $sql= $pdo->prepare("SELECT p.IdProducto, p.NombreProducto, p.PrecioDescuento, p.Descripcion, p.IdCategoria, 
+                                    p.IdVendedor, i.Portada, c.NombreCaracteristica, v.Valor 
+                                    from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto 
+                                    inner join productovalor pv on p.IdProducto=pv.IdProducto
+                                    inner join caracteristicas c  on c.IdCaracteristicas=pv.IdCaracteristicas
+                                    inner join valor v on v.IdCaracteristicas=c.IdCaracteristicas where pv.IdProducto=$IdProducto");
                                     $sql->execute();
                                     $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                                     foreach ($resultado as $dato) {
@@ -168,9 +174,9 @@ include "../Recursos/Conexion.php";
                                     ?>
                                     <div class="flex-w flex-r-m p-b-10">
                                         <div class="size-203 flex-c-m respon6">
-                                        <?php
+                                            <?php
                                             if (!empty($dato['NombreCaracteristica'])) {?>
-                                                <?php echo $dato['NombreCaracteristica'];?> 
+                                            <?php echo $dato['NombreCaracteristica'];?>
                                             <?php } ?>
                                         </div>
 
@@ -189,12 +195,13 @@ include "../Recursos/Conexion.php";
                                                 <div class="dropDownSelect2"></div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> <br>
 
-                                    <div class="flex-w flex-r-m p-b-10">
-                                        <div class="size-204 flex-w flex-m respon6-next">
-                                            <form action="../Recursos/Carrito.php" method="Post">
-
+                                    <div class="size-204 flex-w flex-m respon6-next">
+                                        <div class="flex-w flex-r-m p-b-10">
+                                            <div class="size-203 flex-c-m respon6">
+                                                Cantidad 
+                                            </div>
                                             <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                                 <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                                     <i class="fs-16 zmdi zmdi-minus"></i>
@@ -207,11 +214,12 @@ include "../Recursos/Conexion.php";
                                                     <i class="fs-16 zmdi zmdi-plus"></i>
                                                 </div>
                                             </div>
+                                            <form action="../Recursos/Carrito.php" method="Post">
                                                 <input type="hidden" name="IdProducto" value="<?php echo $dato['IdProducto'];?>">
                                                 <input type="hidden" name="IdVendedor" value="<?php echo $dato['IdVendedor'];?>">
                                                 <br>
-                                                <input type="submit" value="Agregar al Carrito"  class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                                <br> 
+                                                <input type="submit" value="Agregar al Carrito" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                                <br>
                                                 <a href="Index.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Cancelar</a>
                                             </form>
                                         </div>
