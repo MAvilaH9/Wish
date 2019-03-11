@@ -48,15 +48,9 @@ if ($_SESSION['IdPerfil'] == 2 || $_SESSION['IdPerfil'] == 3) {
               <img class="img-xs rounded-circle" src="../FrontEnd/images/usuario.png" alt="Profile image">
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-              <a class="dropdown-item mt-2">
-                Manage Accounts
-              </a>
-              <a class="dropdown-item">
-                Change Password
-              </a>
-              <a class="dropdown-item">
-                Check Inbox
-              </a>
+              <a href="../FrontEnd/Index.php" class="dropdown-item mt-2">
+                Págin Principal
+              </a>  <hr>
               <a class="dropdown-item" href="../Recursos/Logout.php">
                 Cerrar Sesión
               </a>

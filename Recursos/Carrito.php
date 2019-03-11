@@ -4,22 +4,23 @@ session_start();
 require_once ('Conexion.php');
 
 
-$IdProducto = $_POST['IdProducto'];
-$IdVendedor = $_POST['IdVendedor'];
-$cantidad=$_POST['cantidad'];
-$IdUsuario = $_SESSION['IdUsuario'];
+echo $IdProducto = $_POST['IdProducto'];
+echo $IdVendedor = $_POST['IdVendedor'];
+echo $cantidad=$_POST['cantidad'];
+echo $IdUsuario = $_SESSION['IdUsuario'];
 
-$sql_agregar = 'INSERT INTO carrito (IdProducto,Cantidad, IdUsuario,IdVendedor,IdCupon,IdPeso) VALUES (?,?,?,?,null,null)';
+$sql_agregar = 'INSERT INTO carrito (IdProducto,IdUsuario, IdVendedor,IdCupon,IdPeso,Cantidad) VALUES (?,?,?,null,null,?)';
 $sentencia_agregar = $pdo->prepare($sql_agregar);
 
-if ($sentencia_agregar->execute(array($IdProducto,$cantidad, $IdVendedor, $IdUsuario))) {
+if ($sentencia_agregar->execute(array($IdProducto,$IdUsuario, $IdVendedor, $cantidad))) {
     
     header('location:../FrontEnd/Carrito.php?IdUsuario='.$IdUsuario['IdUsuario']);
 
 } else {
-    die();
-}
 
+    //die();
+}
+/*
 if (!isset($_SESSION['Carrito'])) {
     $carrito=array(
         'Idp'=> $IdProducto,
@@ -39,6 +40,6 @@ if (!isset($_SESSION['Carrito'])) {
     $_SESSION['Carrito'][$numprod]=$carrito;
     
     alert($_SESSION,true);
-}
+}*/
 
 ?>

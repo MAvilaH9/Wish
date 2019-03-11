@@ -1481,13 +1481,14 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   }
   
   .slick3-dots li img {
-    width: 100%;
+    width: 53.42px;
+    height: 53.42px;
   }
   
   .slick3-dot-overlay {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 53.42px;
+    height: 53.42px;
     top: 0;
     left: 0;
     cursor: pointer;
@@ -2046,6 +2047,10 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   [ Block2 ]*/
   .block2-pic {
     position: relative;
+  }
+  .block2-pic img{
+    width: 220px;
+    height: 220px;
   }
   
   .block2-btn {

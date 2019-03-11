@@ -3,11 +3,7 @@ session_start();
 include "../Recursos/Conexion.php";
 if (isset($_SESSION['Nombre_Usuario'])) {
 
-	if ($_SESSION['IdPerfil'] == 3) {
-		
-	}
-
-	if ($_SESSION['IdPerfil'] == !3) {
+	if ($_SESSION['IdPerfil'] == 1) {
 		header('location:../BackEnd/Index.php');
 	}
 
@@ -18,6 +14,10 @@ $IdUsuario=$_SESSION['IdUsuario'];
 $sql = $pdo->prepare('SELECT count(IdCarrito) as Cantidad from carrito where IdUsuario=?');
 $sql -> execute(array($IdUsuario));
 $resultado = $sql->fetch();
+
+$sql1 = $pdo->prepare('SELECT count(IdWishlist) as Cantidad from wishlist where IdUsuario=?');
+$sql1 -> execute(array($IdUsuario));
+$resultado1 = $sql1->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -118,24 +118,45 @@ $resultado = $sql->fetch();
 						<ul class="main-menu">
 							<li>
 								<a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?></a>
+								<?php
+								if ($_SESSION['IdPerfil'] == 3)?> <?php{
+								?>	
 								<ul class="sub-menu">
 									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
-									<li><a href="../FrontEnd/ListaDeseos.php">Lista de Deseos</a></li> 
+									<li><a href="../FrontEnd/ListaDeseos.php">Lista de Deseos</a></li>
 									<li><a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $_SESSION['IdUsuario'] ?>">Carrito de Compras</a></li> <hr>
-									<!-- <li><a href="#">Historial de Pedidos</a></li>
-									<li><a href="#">Wish Cash</a></li>
+									<!-- <li><a href="#">Wish Cash</a></li>
+									<li><a href="#">Recompensas</a></li><hr>
+									<li><a href="#">Preguntas Frecuentes</a></li>
+									<li><a href="#">Configuración</a></li> -->
+									<li><a href="../Recursos/Logout.php">Salir</a></li>
+
+								</ul>
+								<?php}?>
+								<?php
+								if ($_SESSION['IdPerfil'] == 2) ?> <?php{
+								?>
+								<ul class="sub-menu">
+									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
+									<li><a href="../BackEnd/Index.php">Administrar Productos</a></li>
+									<li><a href="../FrontEnd/ListaDeseos.php">Lista de Deseos</a></li>
+									<li><a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $_SESSION['IdUsuario'] ?>">Carrito de Compras</a></li> <hr>
+									<!-- <li><a href="#">Wish Cash</a></li>
 									<li><a href="#">Recompensas</a></li><hr>
 									<li><a href="#">Preguntas Frecuentes</a></li>
 									<li><a href="#">Configuración</a></li> -->
 									<li><a href="../Recursos/Logout.php">Salir</a></li>
 								</ul>
+								<?php}
+								?>
+								
 							</li>
 						</ul>
 
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<?php echo $resultado['Cantidad'];?>">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
-						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
+						<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="<?php echo $resultado1['Cantidad'];?>">
 							<i class="zmdi zmdi-favorite-outline"></i>
 						</a>
 					</div>	
@@ -262,7 +283,7 @@ $resultado = $sql->fetch();
 					<?php foreach ($resultado as $dato):?>
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="../FrontEnd/imgProductos/<?php echo $dato['Portada']?>.jpg" alt="IMG">
+							<img src="../FrontEnd/imgProductos/<?php echo $dato['Portada']?>" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">

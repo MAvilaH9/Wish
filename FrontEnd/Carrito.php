@@ -47,7 +47,7 @@ $resultado = $sql->fetch();
 						<tr class="table_row">
 							<td class="column-1">
 								<div class="how-itemcart1">
-									<img src="../FrontEnd/imgProductos/<?php echo $dato['Portada']?>.jpg" alt="IMG">
+									<img src="../FrontEnd/imgProductos/<?php echo $dato['Portada']?>" alt="IMG">
 									<input type="hidden" name="IdVendedor" value="<?php echo $dato['IdVendedor'] ?>">
 									<input type="hidden" name="IdCarrito" value="<?php echo $dato['IdCarrito'] ?>">
 								</div>

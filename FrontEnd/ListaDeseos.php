@@ -21,7 +21,7 @@
                     <!-- Block2 -->
                     <div class="block2">
                         <div class="block2-pic hov-img0">
-                            <img src="../FrontEnd/imgProductos/<?php echo $dato['Portada'];?>.jpg" alt="IMG-PRODUCT">
+                            <img src="../FrontEnd/imgProductos/<?php echo $dato['Portada'];?>" alt="IMG-PRODUCT">
                             <a href="DetalleProducto.php?IdProducto=<?php echo $dato['IdProducto'];?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                                 Ver
                             </a>
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="block2-txt-child2 flex-r p-t-3">
-                                <a href="../Recursos/EliminarLista.php?IdWishList=<?php echo $dato['IdWishList'];?>" class="btn-addwish-b2 dis-block pos-relative" title="Eliminar">
+                                <a href="../Recursos/EliminarLista.php?IdWishList=<?php echo $dato['IdWishList'];?>"  onclick="funcionAlerta()" class="btn-addwish-b2 dis-block pos-relative" title="Eliminar">
                                     <img class="icon-heart1 dis-block trans-04" src="images/Trash.png" alt="ICON">
                                     <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/Trash.png" alt="ICON">
                                 </a>
@@ -55,5 +55,11 @@
             <br> <br>
         </div>
     </section>
+
+    <script>
+        function funcionAlerta(){
+            alert("Producto eliminado de la lista de deseos");
+        }
+    </script>
 
 <?php include "Template/Footer.php";?>
