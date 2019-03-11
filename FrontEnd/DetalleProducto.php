@@ -1,7 +1,35 @@
 <?php   
 include "Template/Header.php";
 include "../Recursos/Conexion.php";
+
+
+is_numeric($_GET['IdProducto']);
+  $idProducto = $_GET['IdProducto'];
+  //Agregar producto a la session
+  if (!isset($_SESSION['visualizado'])) {
+      $productos = array(
+        'IdProducto'=>$idProducto,
+      );
+      $_SESSION['visualizado'][0]=$productos;
+  }else{
+      //Esto es par ano agregar doblemete un producto
+      //Que el producto selecionado no este dentro del carrito
+      $idProductos = array_column($_SESSION['visualizado'],"IdProducto");
+      if (in_array($idProducto,$idProductos)) {
+      }else {
+      $numeroProductos = count($_SESSION['visualizado']);
+      $productos=array(
+        'IdProducto'=>$idProducto,
+      );
+      $_SESSION['visualizado'][$numeroProductos]=$productos;
+      }
+  }
+  
+$idProducto=$_SESSION['visualizado'];
+var_dump($idProducto);
 ?>
+
+
 
 
 <section class="sec-product-detail bg0 p-t-65 p-b-60">
