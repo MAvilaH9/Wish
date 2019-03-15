@@ -9,7 +9,9 @@ class Operaciones{
         $conexion->conectar();   
         //if($nombre==null)
         //{
-            $query=	"select * from producto";
+            $query=	"select p.IdProducto, p.NombreProducto, p.Descripcion, p.PrecioDescuento,
+            i.Portada from producto p inner join imagenproducto i
+            on p.IdImagenProducto=i.IdImagenProducto";
         //}
         //else
         //{
@@ -21,11 +23,11 @@ class Operaciones{
         while ( $data = mysqli_fetch_array($ejecutar) )
               {
                         $r = array();
-                        $r['Idproducto'] = $data['IdProducto'];
+                        $r['IdProducto'] = $data['IdProducto'];
                         $r['NombreProducto'] = $data['NombreProducto'];
 						$r['Descripcion'] = $data['Descripcion'];
                         $r['PrecioDescuento'] = $data['PrecioDescuento'];
-                       // $r['Portada'] = base64_encode($data['Portada']);
+                        $r['Portada'] = base64_encode($data['Portada']);
                         array_push($dataarray, $r);
               }
         $arreglopadre['Productos'] = $dataarray;

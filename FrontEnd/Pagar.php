@@ -32,7 +32,7 @@ if ($_POST) {
  	$sentencia->bindParam(":Correo",$_SESSION['Correo']);
  	$sentencia->execute();
 		
-	 $idventa = $pdo->lastInsertId();
+	 $idVenta = $pdo->lastInsertId();
 		foreach ($resultado as $dato) {
 			$sentencia = $pdo->prepare("INSERT INTO 
 			`detalleventa` (`IdDetalleVenta`, `IdVenta`, `IdCarrito`, `IdDireccionVendedor`, `IdVendedor`, `IdDireccionUsuario`, `IdEnvio`) 

@@ -4,3 +4,4 @@
     $OP = new Operaciones();
     $OP->getProductos();
 ?>
+

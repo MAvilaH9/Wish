@@ -26,7 +26,7 @@ is_numeric($_GET['IdProducto']);
   }
   
 $idProducto=$_SESSION['visualizado'];
-var_dump($idProducto);
+// var_dump($idProducto);
 ?>
 
 
@@ -155,8 +155,8 @@ var_dump($idProducto);
                         <?php echo $resultado['Descripcion'];?>
                     </p>
                     <p class="stext-102 cl3 p-t-23">
-                        Cantidad disponible:
-                        <?php echo $resultado['Cantidad'];?>
+                        <!-- Cantidad disponible:
+                        <?php //echo $resultado['Cantidad'];?> -->
                     </p>
 
                     <!--  -->
@@ -208,7 +208,7 @@ var_dump($idProducto);
                                 <div class="rs1-select2 bor8 bg0">
                                     <?php 
                                     if ($dato['NombreCaracteristica']=='Color'){
-                                    echo '<select class="js-select2" name="time">';
+                                    echo '<select class="js-select2" name="Valor" required>';
                                     echo '<option>Seleccione</option>';
                                     foreach ($resultado as $dato) {
                                         echo '<option value="'.$dato['IdValor'].'">'.$dato['Valor'].'</option>';
@@ -250,10 +250,9 @@ var_dump($idProducto);
                         </div>
                     </div>
 
-                    <!--  -->
                     <div class="flex-w flex-m p-l-100 p-t-40 respon7">
                         <div class="flex-m bor9 p-r-10 m-r-11">
-                            <a href="../Recursos/AgregarLista" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
+                            <a href="../Recursos/AgregarLista.php?IdProducto=<?php echo $IdProducto; ?>" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 tooltip100"
                                 data-tooltip="Add to Wishlist">
                                 <i class="zmdi zmdi-favorite"></i>
                             </a>

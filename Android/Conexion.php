@@ -1,16 +1,11 @@
 <?php
 class Conexion
 {
-    private $servidor="localhost";
-	private $base_datos="wishbd";
-	private $usuario="root";
-	private $password=" ";
+	private $conexion;
+	var $filas;
+	static $_instance;
 
-    private $conexion;
-    var $filas;
-    static $_instance;
-
-    private function __Construct()
+	private function __Construct()
 	{
 
 	}
@@ -18,22 +13,25 @@ class Conexion
 	private function __clone()
 	{}
 
-	public static function getInstance(){
-        if (!(self::$_instance instanceof self)){
-            self::$_instance=new self();
-        }
-        return self::$_instance;
-    }
-    public function conectar(){
-
-        $this->conexion = mysqli_connect('localhost:3306', 'root', '', 'wishbd');
-        if (!$this->conexion) {
-            die('No pudo conectarse: ' );
+	public static function getInstance()
+        {
+            if (!(self::$_instance instanceof self)){
+               self::$_instance=new self();
+            }
+            return self::$_instance;
         }
 
-    }
+	public function conectar()
+	{
 
-    public function desconectar()
+            $this->conexion = mysqli_connect('localhost', 'id8736505_marioavila', 'Mavilah9', 'id8736505_wish');
+            if (!$this->conexion) {
+                die('No pudo conectarse: ' );
+            }
+
+	}
+
+	public function desconectar()
 	{
 		mysqli_close($this->conexion);
 	}
@@ -62,6 +60,5 @@ class Conexion
 		}
 	}
 }
-
 ?>
 
