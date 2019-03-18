@@ -36,7 +36,7 @@ $idProducto=$_SESSION['visualizado'];
     <div class="container">
     <?php 
         $IdProducto=$_GET['IdProducto'];
-        $sql = $pdo->prepare('SELECT p.NombreProducto,p.Descripcion, p.IdVendedor, i.Portada, i.Imagen1,i.Imagen2,i.Imagen3,i.Imagen4,i.Imagen5,c.NombreCaracteristica, v.Valor,m.Precio,m.Cantidad from detalle d 
+        $sql = $pdo->prepare('SELECT p.NombreProducto,p.Descripcion, p.IdVendedor, i.Portada, i.Imagen1,i.Imagen2,i.Imagen3,i.Imagen4,i.Imagen5,c.NombreCaracteristica, v.Valor,m.Precio,m.IdMaestro,m.Cantidad from detalle d 
         inner join maestro m on m.IdMaestro=d.IdMaestro
         inner join valor v on d.IdValor=v.IdValor
         inner join caracteristicas c on c.IdCaracteristicas=v.IdCaracteristicas 
@@ -66,7 +66,7 @@ $idProducto=$_SESSION['visualizado'];
                             </div>
                             <!-- Imagen 1-->
                             <?php
-                                        if(!empty($resultado['Imagen1'])){?>
+                            if(!empty($resultado['Imagen1'])){?>
                             <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen1'];?>">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen1'];?>" alt="IMG-PRODUCT">
@@ -82,7 +82,7 @@ $idProducto=$_SESSION['visualizado'];
 
                             <!-- Imagen 2 -->
                             <?php
-                                        if (!empty($resultado['Imagen2'])){ ?>
+                            if (!empty($resultado['Imagen2'])){ ?>
                             <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen2'];?>">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen2'];?>" alt="IMG-PRODUCT">
@@ -96,7 +96,7 @@ $idProducto=$_SESSION['visualizado'];
 
                             <!-- Imagen 3 -->
                             <?php
-                                        if (!empty($resultado['Imagen3'])) { ?>
+                            if (!empty($resultado['Imagen3'])) { ?>
                             <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen3'];?>">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen3'];?>" alt="IMG-PRODUCT">
@@ -110,7 +110,7 @@ $idProducto=$_SESSION['visualizado'];
 
                             <!-- Imagen 4 -->
                             <?php
-                                        if (!empty($resultado['Imagen4'])){ ?>
+                            if (!empty($resultado['Imagen4'])){ ?>
                             <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen4'];?>">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen4'];?>" alt="IMG-PRODUCT">
@@ -124,7 +124,7 @@ $idProducto=$_SESSION['visualizado'];
 
                             <!-- Imagen 5 -->
                             <?php
-                                        if (!empty($resultado['Imagen5'])){ ?>
+                            if (!empty($resultado['Imagen5'])){ ?>
                             <div class="item-slick3" data-thumb="../FrontEnd/imgProductos/<?php echo $resultado['Imagen5'];?>">
                                 <div class="wrap-pic-w pos-relative">
                                     <img src="../FrontEnd/imgProductos/<?php echo $resultado['Imagen5'];?>" alt="IMG-PRODUCT">
@@ -161,93 +161,105 @@ $idProducto=$_SESSION['visualizado'];
 
                     <!--  -->
                     <div class="p-t-33">
-                        <?php 
-                        $IdProducto=$_GET['IdProducto'];
-                        $sql= $pdo->prepare("SELECT c.NombreCaracteristica, v.Valor,m.Precio,m.Cantidad from detalle d 
-                        inner join maestro m on m.IdMaestro=d.IdMaestro
-                        inner join valor v on d.IdValor=v.IdValor
-                        inner join caracteristicas c on c.IdCaracteristicas=v.IdCaracteristicas 
-                        inner join producto p on p.IdProducto=c.IdProducto where m.IdProducto=$IdProducto");
-                        $sql->execute();
-                        $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
-                        foreach ($resultado as $dato) {
-                        }?>
-                        <div class="flex-w flex-r-m p-b-10">
-                            <div class="size-203 flex-c-m respon6">
-                                <?php
-                                if ($dato['NombreCaracteristica']=='Talla') {?>
-                                <?php echo $dato['NombreCaracteristica'];?>
-                                <?php } ?>
-                            </div>
-
-                            <div class="size-204 respon6-next">
-                                <div class="rs1-select2 bor8 bg0">
-                                    <?php 
-                                    if ($dato['NombreCaracteristica']=='Talla'){
-                                    echo '<select class="js-select2" name="time">';
-                                    echo '<option>Seleccione</option>';
-                                        foreach ($resultado as $dato) {
-                                        echo '<option value="'.$dato['IdValor'].'">'.$dato['Valor'].'</option>';
-                                        }
-                                    echo'</select>';
-                                    }
-                                    ?>
-                                    <div class="dropDownSelect2"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex-w flex-r-m p-b-10">
-                            <div class="size-203 flex-c-m respon6">
-                                <?php
-                                if ($dato['NombreCaracteristica']=='Color') {?>
-                                <?php echo $dato['NombreCaracteristica'];?>
-                                <?php } ?>
-                            </div>
-
-                            <div class="size-204 respon6-next">
-                                <div class="rs1-select2 bor8 bg0">
-                                    <?php 
-                                    if ($dato['NombreCaracteristica']=='Color'){
-                                    echo '<select class="js-select2" name="Valor" required>';
-                                    echo '<option>Seleccione</option>';
-                                    foreach ($resultado as $dato) {
-                                        echo '<option value="'.$dato['IdValor'].'">'.$dato['Valor'].'</option>';
-                                    }
-                                    echo'</select>';
-                                    }?>
-                                    <div class="dropDownSelect2"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex-w flex-r-m p-b-10">
-                            <div class="size-204 flex-w flex-m respon6-next">
-                            <form action="../Recursos/Carrito.php" method="Post">
-
+                        <form action="../Recursos/Carrito.php" method="Post">
+                            <?php 
+                            $IdProducto=$_GET['IdProducto'];
+                            $sql= $pdo->prepare("SELECT c.NombreCaracteristica,v.IdValor, v.Valor,m.Precio,m.Cantidad,m.IdMaestro from detalle d 
+                            inner join maestro m on m.IdMaestro=d.IdMaestro
+                            inner join valor v on d.IdValor=v.IdValor
+                            inner join caracteristicas c on c.IdCaracteristicas=v.IdCaracteristicas 
+                            inner join producto p on p.IdProducto=c.IdProducto where m.IdProducto=$IdProducto AND c.NombreCaracteristica= 'Talla'");
+                            $sql->execute();
+                            $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
+                            foreach ($resultado as $dato) {
+                            }?>
+                            <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-203 flex-c-m respon6">
-                                    Cantidad
+                                <input type="hidden" name="IdMaestro" value="<?php echo $dato['IdMaestro']; ?>">
+                                    <?php
+                                    if ($dato['NombreCaracteristica'] =='Talla') {?>
+                                    <?php echo $dato['NombreCaracteristica'];?>
+                                    <?php } ?>
                                 </div>
-                                <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                        <i class="fs-16 zmdi zmdi-minus"></i>
-                                    </div>
 
-                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="cantidad"
-                                        value="1">
-
-                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                        <i class="fs-16 zmdi zmdi-plus"></i>
+                                <div class="size-204 respon6-next">
+                                    <div class="rs1-select2 bor8 bg0">
+                                        <?php 
+                                        if ($dato['NombreCaracteristica'] =='Talla'){
+                                        echo '<select class="js-select2" name="Valort" required>';
+                                        echo '<option>Seleccione</option>';
+                                        foreach ($resultado as $dato) {
+                                            echo '<option value="'.$dato['Valor'].'">'.$dato['Valor'].'</option>';
+                                        }
+                                        echo'</select>';
+                                        }?>
+                                        <div class="dropDownSelect2"></div>
                                     </div>
                                 </div>
+                            </div>
+                            
+                            <?php 
+                            $IdProducto=$_GET['IdProducto'];
+                            $sql= $pdo->prepare("SELECT c.NombreCaracteristica,v.IdValor, v.Valor,m.Precio,m.Cantidad,m.IdMaestro from detalle d 
+                            inner join maestro m on m.IdMaestro=d.IdMaestro
+                            inner join valor v on d.IdValor=v.IdValor
+                            inner join caracteristicas c on c.IdCaracteristicas=v.IdCaracteristicas 
+                            inner join producto p on p.IdProducto=c.IdProducto where m.IdProducto=$IdProducto AND c.NombreCaracteristica='Color'");
+                            $sql->execute();
+                            $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
+                            foreach ($resultado as $dato) {
+                            }?>
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-203 flex-c-m respon6">
+                                <input type="hidden" name="IdMaestro" value="<?php echo $dato['IdMaestro']; ?>">
+                                    <?php
+                                    if ($dato['NombreCaracteristica']=='Color') {?>
+                                    <?php echo $dato['NombreCaracteristica'];?>
+                                    <?php } ?>
+                                </div>
+
+                                <div class="size-204 respon6-next">
+                                    <div class="rs1-select2 bor8 bg0">
+                                        <?php 
+                                        if ($dato['NombreCaracteristica']=='Color'){
+                                        echo '<select class="js-select2" name="Valorc" required>';
+                                        echo '<option>Seleccione</option>';
+                                        foreach ($resultado as $dato) {
+                                            echo '<option value="'.$dato['Valor'].'">'.$dato['Valor'].'</option>';
+                                        }
+                                        echo'</select>';
+                                        }?>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-204 flex-w flex-m respon6-next">
+                                    <div class="size-203 flex-c-m respon6">
+                                        Cantidad
+                                    </div>
+                                    <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                            <i class="fs-16 zmdi zmdi-minus"></i>
+                                        </div>
+
+                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="cantidad"
+                                            value="1">
+
+                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                            <i class="fs-16 zmdi zmdi-plus"></i>
+                                        </div>
+                                    </div>
                                     <input type="hidden" name="IdProducto" value="<?php echo $IdProducto;?>">
                                     <input type="hidden" name="IdVendedor" value="<?php echo $idVendedor;?>">
                                     <br>
                                     <input type="submit" value="Agregar al Carrito" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                    <br>
+                                    <br> <br> <br>
                                     <a href="Index.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Cancelar</a>
-                                </form>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
 
                     <div class="flex-w flex-m p-l-100 p-t-40 respon7">

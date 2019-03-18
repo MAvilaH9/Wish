@@ -6,10 +6,13 @@ require_once ('Conexion.php');
 $correo = $_POST['Correo'];
 $contrasenia = $_POST['Contrasenia'];
 
-$sql = 'SELECT u.IdUsuario, u.NombreUsuario, u.Apellidos, u.IdPerfil, u.Correo, u.Contrasenia, v.IdVendedor from usuario u inner join vendedor v on u.IdUsuario=v.IdUsuario where u.Correo=?';
+$sql = 'SELECT * from usuario where Correo=?';
 $sentencia = $pdo->prepare($sql);   
 $sentencia->execute(array($correo));
 $resultado = $sentencia->fetch();
+
+$resultado['Correo'];
+$resultado['Contrasenia'];
 
 
 if (!$resultado) {

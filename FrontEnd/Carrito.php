@@ -23,27 +23,34 @@ $resultado = $sql->fetch();
 	<div class="container">
 		<div class="row">
 			<?php if ($resultado ['Cantidad']!=0) {?>
-			<div class="col-lg-10 col-xl-10 m-lr-auto m-b-50">
+			<div class="col-lg-10 col-xl-12 m-lr-auto m-b-50">
 				<form action="../Recursos/UpdateCarrito.php" method="Post">
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
 								<tr class="table_head">
 									<th class="column-1">Producto</th>
-									<th class="column-2"></th>
-									<th class="column-3">Precio</th>
-									<th class="column-4">Cantidad</th>
-									<th class="column-5">Subtotal</th>
-									<th class="column-6"></th>
+									<th class="column-2">Nombre</th>
+									<th class="column-3">Talla/Color</th>
+									<th class="column-4">Precio c/u</th>
+									<th class="column-5">Cantidad</th>
+									<th class="column-6">Subtotal</th>
+									<th class="column-7"></th>
 								</tr>
 								<?php 
-									$IdUsuario =$_SESSION['IdUsuario'];
-									$sql= $pdo->prepare("SELECT p.NombreProducto, p.IdVendedor, c.Cantidad, p.PrecioDescuento, i.Portada, c.IdCarrito, u.IdUsuario from carrito c inner join producto p on c.IdProducto=p.IdProducto inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto inner join usuario u on u.IdUsuario=c.IdUsuario inner join vendedor v on p.IdVendedor=v.IdVendedor where u.IdUsuario=$IdUsuario");
+									$IdUsuario =$_GET['IdUsuario'];
+									$sql= $pdo->prepare("SELECT c.IdCarrito, i.Portada,p.IdProducto,p.NombreProducto, pc.Talla,pc.Color, c.Cantidad, m.Precio, m.IdMaestro,u.IdUsuario, v.IdVendedor
+									from carrito c inner join producto p on c.IdProducto=p.IdProducto 
+									inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto 
+									inner join usuario u on u.IdUsuario=c.IdUsuario 
+									inner join vendedor v on p.IdVendedor=v.IdVendedor
+									inner join maestro m on m.IdProducto=p.IdProducto
+                                    inner join productocarrito pc on pc.IdCarrito=c.IdCarrito where c.IdUsuario=$IdUsuario");
 									$sql->execute();
 									$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 								?>
 								<?php $total=0; ?>
-								<?php foreach ($resultado as $dato):?>
+								<?php foreach ($resultado as $dato):{?>
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1">
@@ -54,11 +61,15 @@ $resultado = $sql->fetch();
 									<td class="column-2">
 										<?php echo $dato['NombreProducto']?>
 									</td>
-									<td class="column-3">$
-										<?php echo $dato['PrecioDescuento']?>
+									<td class="column-3">
+									<?php echo $dato['Talla']?>/<?php echo $dato['Color']?>
 									</td>
-									<td class="column-4">
+									<td class="column-4">$
+										<?php echo $dato['Precio']?>
+									</td>
+									<td class="column-5">
 										<div class="wrap-num-product flex-w m-l-auto m-r-0">
+										
 											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
 												<i class="fs-16 zmdi zmdi-minus"></i>
 											</div>
@@ -75,15 +86,15 @@ $resultado = $sql->fetch();
 									foreach ($resultado as $dat) {
 										$cant=$cant+$dat['Cantidad'];
 									}?>
-									<td class="column-5">$
-										<?php echo number_format($dato['PrecioDescuento']*$dato['Cantidad'],2);?>
+									<td class="column-6">$
+										<?php echo number_format($dato['Precio']*$dato['Cantidad'],2);?>
 									</td>
-									<td class="column-6"><a href="../Recursos/DeleteCarrito.php?IdCarrito=<?php echo $dato['IdCarrito'];?>"
+									<td class="column-7"><a href="../Recursos/DeleteCarrito.php?IdCarrito=<?php echo $dato['IdCarrito'];?>"
 										 onclick="funcionAlertaE()">Eliminar</a></td>
 
 								</tr>
-								<?php $total=$total+($dato['PrecioDescuento']*$dato['Cantidad']); ?>
-								<?php endforeach?>
+								<?php $total=$total+($dato['Precio']*$dato['Cantidad']); ?>
+								<?php } endforeach; ?>
 							</table>
 						</div>
 
@@ -113,7 +124,7 @@ $resultado = $sql->fetch();
 								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="cupon" placeholder="Código de Cupón">
 
 								<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-									Aplica
+									Aplicar
 								</div>
 							</div>
 
@@ -134,7 +145,9 @@ $resultado = $sql->fetch();
 						</div>
 						<input type="hidden" name="IdUsuario">
 						<input type="hidden" name="IdVendedor" value="<?php echo $dato['IdVendedor'] ?>">
-						<!-- <input type="hidden" name="IdCarrito" value="<?php echo $dato['IdCarrito'] ?>"> -->
+						<input type="hidden" name="IdMaestro" value="<?php echo $dato['IdMaestro'] ?>">
+						<input type="hidden" name="IdProducto" value="<?php echo $dato['IdProducto'] ?>">
+						<input type="hidden" name="IdCarrito" value="<?php echo $dato['IdCarrito'] ?>">
 						<input type="hidden" name="Cantidad" value="<?php echo $cant?>">
 						<input type="hidden" name="Total" value="<?php echo $total?>">
 						<input type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" value="Pagar">

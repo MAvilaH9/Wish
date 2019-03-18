@@ -14,6 +14,8 @@ if ($_POST) {
  	$total=$_POST['Total'];
  	$correo=$_SESSION['Correo'];
  	$IdVendedor=$_POST['IdVendedor'];
+	$IdMaestro=$_POST['IdMaestro'];
+	$IdProducto=$_POST['IdProducto'];
 
 	$idUsuario=$_SESSION['IdUsuario'];
     $sql= $pdo->prepare("SELECT IdCarrito FROM carrito WHERE IdUsuario=$idUsuario;");
@@ -43,6 +45,32 @@ if ($_POST) {
 			$sentencia->bindParam(":IdVendedor", $IdVendedor);
 			$sentencia->execute();
 		}
+
+	$sql = $pdo->prepare("SELECT * from maestro where IdMaestro=$IdMaestro");
+	$sql -> execute(array($IdMaestro));
+	$resultado = $sql->fetch();
+	$cantidad=$resultado['Cantidad'];
+	$C=($cantidad-$cant);
+
+	$sql_agregar = "UPDATE maestro SET Cantidad='$C' WHERE IdMaestro ='$IdMaestro'";
+        $sentencia_agregar = $pdo->prepare($sql_agregar);
+
+    if ($sentencia_agregar->execute(array($C))) {
+		$sql = $pdo->prepare("SELECT * from producto where IdProducto=$IdProducto");
+		$sql -> execute(array($IdProducto));
+		$resultado = $sql->fetch();
+		$cantidad=$resultado['Cantidad'];
+		$C=($cantidad-$cant);
+		$sql_agregar = "UPDATE producto SET Cantidad='$C' WHERE IdProducto='$IdProducto'";
+		$sentencia_agregar = $pdo->prepare($sql_agregar);
+		if ($sentencia_agregar->execute(array($C))) {
+			# code...
+		}
+
+    }else {
+        $msg = "Porfavor vuelva a intentarlo";
+        //die();
+    }
 	
 }
 
@@ -122,7 +150,7 @@ if ($_POST) {
                         onAuthorize: function (data, actions) {
                             return actions.payment.execute().then(function () {
                                 console.log(data);
-                                window.location="Pagar.1.php?paymentToken="+data.paymentToken                                    
+                                window.location="Pagar.1.php?paymentToken="+data.paymentToken                              
                             });
                         }
                     }, '#paypal-button-container');

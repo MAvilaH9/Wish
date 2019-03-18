@@ -3,23 +3,60 @@ session_start();
 
 require_once ('Conexion.php');
 
+$cantidad=$_POST['cantidad'];
+$IdProducto = $_POST['IdProducto'];
+$IdUsuario = $_SESSION['IdUsuario'];
+$IdVendedor = $_POST['IdVendedor'];
+$Valort=$_POST['Valort'];
+$Valorc=$_POST['Valorc'];
 
-echo $IdProducto = $_POST['IdProducto'];
-echo $IdVendedor = $_POST['IdVendedor'];
-echo $cantidad=$_POST['cantidad'];
-echo $IdUsuario = $_SESSION['IdUsuario'];
+    $sql = $pdo->prepare("SELECT c.IdCarrito, i.Portada,p.IdProducto,p.NombreProducto, pc.Talla,pc.Color, c.Cantidad, m.Precio, m.IdMaestro,u.IdUsuario, v.IdVendedor
+    from carrito c inner join producto p on c.IdProducto=p.IdProducto 
+    inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto 
+    inner join usuario u on u.IdUsuario=c.IdUsuario 
+    inner join vendedor v on p.IdVendedor=v.IdVendedor
+    inner join maestro m on m.IdProducto=p.IdProducto
+    inner join productocarrito pc on pc.IdCarrito=c.IdCarrito where c.IdUsuario=$IdUsuario");
+    $sql -> execute(array($IdProducto));
+    $resultado = $sql->fetch();
+    $talla=$resultado['Talla'];
+    $color=$resultado['Color'];
+        
 
-$sql_agregar = 'INSERT INTO carrito (IdProducto,IdUsuario, IdVendedor,IdCupon,IdPeso,Cantidad) VALUES (?,?,?,null,null,?)';
-$sentencia_agregar = $pdo->prepare($sql_agregar);
+if ($Valort != $talla && $Valorc != $color || $Valort != $talla || $Valorc != $color) {
+    $sql_agregar = 'INSERT INTO carrito (Cantidad,IdProducto,IdUsuario, IdVendedor,IdCupon,IdPeso) VALUES (?,?,?,?,null,null)';
+    $sentencia_agregar = $pdo->prepare($sql_agregar);
 
-if ($sentencia_agregar->execute(array($IdProducto,$IdUsuario, $IdVendedor, $cantidad))) {
-    
-    header('location:../FrontEnd/Carrito.php?IdUsuario='.$IdUsuario['IdUsuario']);
+    if ($sentencia_agregar->execute(array($cantidad,$IdProducto,$IdUsuario, $IdVendedor))) {
+        $IdCarrito = $pdo->lastInsertId();
+        $talla=$_POST['Valort'];
+        $color=$_POST['Valorc'];
+        $sql_agregar = 'INSERT INTO productocarrito (IdCarrito,IdProducto,Talla,Color,Cantidad) VALUES (?,?,?,?,?)';
+        $sentencia_agregar = $pdo->prepare($sql_agregar);
+        if ($sentencia_agregar->execute(array($IdCarrito,$IdProducto,$talla,$color, $cantidad))) {
+            header("location: ../FrontEnd/Carrito.php?IdUsuario=$IdUsuario");
+        }
 
-} else {
+    } else {
+        //die();
+    }
+}else {?>
+<script>
+ window.onload=function Alertcar() {
+     
+    alert('Producto ya esta en el carrito',ventana());
 
-    //die();
+ }
+
+ function ventana () {
+    <?php header("location: ../FrontEnd/Carrito.php?IdUsuario=$IdUsuario");?>
+ }
+</script>
+
+<?php  
+
 }
+
 /*
 if (!isset($_SESSION['Carrito'])) {
     $carrito=array(
@@ -43,3 +80,4 @@ if (!isset($_SESSION['Carrito'])) {
 }*/
 
 ?>
+
