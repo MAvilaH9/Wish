@@ -64,7 +64,9 @@ if ($_POST) {
 		$sql_agregar = "UPDATE producto SET Cantidad='$C' WHERE IdProducto='$IdProducto'";
 		$sentencia_agregar = $pdo->prepare($sql_agregar);
 		if ($sentencia_agregar->execute(array($C))) {
-			# code...
+
+			$sentencia=$pdo->prepare("UPDATE carrito set Estatus='Pagado' where IdUsuario = $idUsuario;");
+            $sentencia->execute();
 		}
 
     }else {

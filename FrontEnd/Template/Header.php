@@ -11,7 +11,7 @@ if (isset($_SESSION['Nombre_Usuario'])) {
 	header('location:Login.php');
 }
 $IdUsuario=$_SESSION['IdUsuario'];
-$sql = $pdo->prepare('SELECT count(IdCarrito) as Cantidad from carrito where IdUsuario=?');
+$sql = $pdo->prepare("SELECT count(IdCarrito) as Cantidad from carrito where IdUsuario=? AND Estatus='Pendiente'");
 $sql -> execute(array($IdUsuario));
 $resultado = $sql->fetch();
 
@@ -74,20 +74,24 @@ $resultado1 = $sql1->fetch();
 					<div class="menu-desktop">	
 						<ul class="main-menu">
 							<li>
-								<a href="Index.php"><b>Popular</b></a>
+								<a href="Index.php"><b>Inicio</b></a>
+							</li>
+							<li>
+								<a href="Index.php"><b>Productos</b></a>
 							</li>
 
-							<li >
+							<!-- <li >
 								<a href="#"><b>Ofertas Relampago</b></a>
-							</li>
+							</li> -->
 
 							<li>
 								<a href="Visualizado.php"><b>Visualizado Recientemete</b></a>
 							</li>
+							
 
-							<li>
+							<!-- <li>
 								<a href="#">Outlet</a>
-							</li>
+							</li> -->
 
 							<li>
 								<a href="#">Más</a>
@@ -124,6 +128,7 @@ $resultado1 = $sql1->fetch();
 								<ul class="sub-menu">
 									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
 									<li><a href="../FrontEnd/ListaDeseos.php">Lista de Deseos</a></li>
+									<li><a href="../FrontEnd/HistorialCompras.php">Historial de Compras</a></li>
 									<li><a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $_SESSION['IdUsuario'] ?>">Carrito de Compras</a></li> <hr>
 									<!-- <li><a href="#">Wish Cash</a></li>
 									<li><a href="#">Recompensas</a></li><hr>
@@ -140,6 +145,7 @@ $resultado1 = $sql1->fetch();
 									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
 									<li><a href="../BackEnd/Index.php">Administrar Productos</a></li>
 									<li><a href="../FrontEnd/ListaDeseos.php">Lista de Deseos</a></li>
+									<li><a href="../FrontEnd/HistorialCompras.php">Historial de Compras</a></li>
 									<li><a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $_SESSION['IdUsuario'] ?>">Carrito de Compras</a></li> <hr>
 									<!-- <li><a href="#">Wish Cash</a></li>
 									<li><a href="#">Recompensas</a></li><hr>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-03-2019 a las 23:35:19
+-- Tiempo de generación: 20-03-2019 a las 01:04:37
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -72,15 +72,9 @@ CREATE TABLE `carrito` (
   `IdUsuario` int(11) NOT NULL,
   `IdVendedor` int(11) NOT NULL,
   `IdCupon` int(11) DEFAULT NULL,
-  `IdPeso` int(11) DEFAULT NULL
+  `IdPeso` int(11) DEFAULT NULL,
+  `Estatus` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `carrito`
---
-
-INSERT INTO `carrito` (`IdCarrito`, `Cantidad`, `IdProducto`, `IdUsuario`, `IdVendedor`, `IdCupon`, `IdPeso`) VALUES
-(13, 1, 7, 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -346,7 +340,7 @@ CREATE TABLE `maestro` (
 --
 
 INSERT INTO `maestro` (`IdMaestro`, `Precio`, `Cantidad`, `IdProducto`) VALUES
-(2, '200.00', 7, 1),
+(2, '200.00', 1, 1),
 (3, '100.00', 8, 2),
 (4, '250.00', 10, 3),
 (5, '50.00', 10, 4),
@@ -448,7 +442,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`IdProducto`, `NombreProducto`, `Descripcion`, `Codigo`, `Precio`, `PrecioDescuento`, `Peso`, `EstadoProducto`, `EstadoPetProducto`, `Cantidad`, `IdVendedor`, `IdImagenProducto`, `IdCategoria`) VALUES
-(1, 'Anillo de Plata', 'Anillo para compromiso de plata', 123, 300, 200, '100 gr', 0, 0, 7, 1, 1, 1),
+(1, 'Anillo de Plata', 'Anillo para compromiso de plata', 123, 300, 200, '100 gr', 0, 0, 1, 1, 1, 1),
 (2, 'Correa', 'Correa de cuero para caballero', 321, 150, 100, '50gr', 0, 0, 8, 1, 2, 1),
 (3, 'Lentes', 'Lentes para sol', 123, 550, 250, '100 gr', 0, 0, 10, 1, 3, 1),
 (4, 'Percing', 'Percing para caballero', 555, 150, 50, '50gr', 0, 0, 10, 1, 4, 1),
@@ -492,7 +486,7 @@ CREATE TABLE `productocarrito` (
 --
 
 INSERT INTO `productocarrito` (`IdCarrito`, `IdProducto`, `Talla`, `Color`, `Cantidad`) VALUES
-(13, 7, 'Chica', 'Negro', 1);
+(3, 1, '3.5', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -745,7 +739,13 @@ INSERT INTO `venta` (`IdVenta`, `StatusPago`, `ClaveTransaccion`, `Fecha`, `Cant
 (99, 0, 0, '2019-03-18 12:37:55', 2, 400, NULL, 'mavilah9@gmail.com'),
 (100, 0, 0, '2019-03-18 12:41:53', 1, 200, NULL, 'mavilah9@gmail.com'),
 (101, 0, 0, '2019-03-18 12:42:28', 2, 300, NULL, 'mavilah9@gmail.com'),
-(102, 0, 0, '2019-03-18 14:52:32', 1, 200, NULL, 'mavilah9@gmail.com');
+(102, 0, 0, '2019-03-18 14:52:32', 1, 200, NULL, 'mavilah9@gmail.com'),
+(103, 0, 0, '2019-03-19 10:00:55', 1, 200, NULL, 'mavilah9@gmail.com'),
+(104, 0, 0, '2019-03-19 10:06:30', 1, 200, NULL, 'mavilah9@gmail.com'),
+(105, 0, 0, '2019-03-19 10:10:29', 1, 200, NULL, 'mavilah9@gmail.com'),
+(106, 0, 0, '2019-03-19 10:16:38', 1, 200, NULL, 'mavilah9@gmail.com'),
+(107, 0, 0, '2019-03-19 10:22:27', 1, 200, NULL, 'mavilah9@gmail.com'),
+(108, 0, 0, '2019-03-19 17:07:37', 1, 200, NULL, 'mavilah9@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -991,7 +991,7 @@ ALTER TABLE `caracteristicas`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `IdCarrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `IdCarrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -1021,7 +1021,7 @@ ALTER TABLE `detalle`
 -- AUTO_INCREMENT de la tabla `detalleventa`
 --
 ALTER TABLE `detalleventa`
-  MODIFY `IdDetalleVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `IdDetalleVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `direccionusuario`
@@ -1117,7 +1117,7 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `IdVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `IdVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT de la tabla `wishlist`
