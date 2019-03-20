@@ -2,21 +2,11 @@
 include "Template/Header.php";
 include "../Recursos/Conexion.php";
 $IdUsuario=$_SESSION['IdUsuario'];
+$toke=$_GET['paymentToken'];
+$Idventa=$_GET['IdVenta'];
 
-// $sql=$pdo->prepare('SELECT * FROM carrito WHERE IdUsuario = ?');
-// $sql->execute(array($IdUsuario));
-// $resultado = $sql->fetch();
-// $idCarrito = $resultado['IdCarrito'];
-
-// $sql = 'DELETE FROM carrito WHERE IdCarrito=:IdCarrito';
-// $statement = $pdo->prepare($sql);
-// if ($statement->execute([':IdCarrito' => $idCarrito])) {
-//   $sql1 = 'DELETE FROM productocarrito WHERE IdCarrito=:IdCarrito';
-//   $statement1 = $pdo->prepare($sql1);
-//   if ($statement1->execute([':IdCarrito' => $idCarrito])) {
-//   }
-
-// }
+$sentencia=$pdo->prepare("UPDATE venta set DatosPaypal='$toke' where IdVenta = $Idventa");
+$sentencia->execute();
 
 ?>
 <br> <br> <br>
@@ -48,13 +38,16 @@ $IdUsuario=$_SESSION['IdUsuario'];
 				<hr>
 				<?php 
 				$IdUsuario =$_SESSION['IdUsuario'];
-				$sql= $pdo->prepare("SELECT c.IdCarrito, i.Portada,p.NombreProducto, pc.Talla,pc.Color, c.Cantidad, m.Precio,u.IdUsuario, v.IdVendedor
+				$cant=$_GET['Cantidad'];
+				$sql= $pdo->prepare("SELECT c.IdCarrito, i.Portada,p.NombreProducto, pc.Talla,pc.Color, c.Cantidad, 
+				m.Precio,u.IdUsuario, v.IdVendedor
 				from carrito c inner join producto p on c.IdProducto=p.IdProducto 
 				inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto 
 				inner join usuario u on u.IdUsuario=c.IdUsuario 
 				inner join vendedor v on p.IdVendedor=v.IdVendedor
 				inner join maestro m on m.IdProducto=p.IdProducto
-				inner join productocarrito pc on pc.IdCarrito=c.IdCarrito where c.IdUsuario=$IdUsuario");
+				inner join productocarrito pc on pc.IdCarrito=c.IdCarrito where c.IdUsuario=$IdUsuario 
+				AND Estatus='Pagado' ORDER by IdCarrito DESC limit $cant");
 				$sql->execute();
 				$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 				?>

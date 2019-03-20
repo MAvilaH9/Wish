@@ -2,8 +2,14 @@
 // Inicializar la sesión.
 // Si está usando session_name("algo"), ¡no lo olvide ahora!
 session_start();
+include "Conexion.php";
+$IdUsuario=$_SESSION['IdUsuario'];
+$sentencia=$pdo->prepare("DELETE FROM visualizado WHERE IdUsuario=$IdUsuario");
+$sentencia -> execute();
 // Destruir todas las variables de sesión.
 $_SESSION = array();
+
+
 
 // Si se desea destruir la sesión completamente, borre también la cookie de sesión.
 // Nota: ¡Esto destruirá la sesión, y no la información de la sesión!

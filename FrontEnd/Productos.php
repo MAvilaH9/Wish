@@ -1,3 +1,4 @@
+<?php include "Template/Header.php"; ?>
 
 <!-- Product -->
 
@@ -32,7 +33,8 @@
         <div class="row isotope-grid">
             <?php
                 include "../Recursos/Conexion.php";
-                $sql= $pdo->prepare("SELECT p.IdProducto, p.NombreProducto, p.PrecioDescuento, p.IdCategoria, i.Portada from producto p inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto");
+                $sql= $pdo->prepare("SELECT p.IdProducto, p.NombreProducto, p.PrecioDescuento, p.IdCategoria, i.Portada from producto p 
+                inner join imagenproducto i on p.IdImagenProducto=i.IdImagenProducto");
 				$sql->execute();
 				$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 			?>
@@ -80,3 +82,4 @@
     </div>
 </section>
 
+<?php include "Template/Footer.php"; ?>

@@ -77,7 +77,7 @@ $resultado1 = $sql1->fetch();
 								<a href="Index.php"><b>Inicio</b></a>
 							</li>
 							<li>
-								<a href="Index.php"><b>Productos</b></a>
+								<a href="Productos.php"><b>Productos</b></a>
 							</li>
 
 							<!-- <li >
@@ -282,7 +282,10 @@ $resultado1 = $sql1->fetch();
 				<ul class="header-cart-wrapitem">
 					<?php 
 						$IdUsuario =$_SESSION['IdUsuario'];
-						$sql= $pdo->prepare("SELECT p.NombreProducto, p.PrecioDescuento, i.Portada, c.IdCarrito, u.IdUsuario from carrito c inner join producto p on c.IdProducto=p.IdProducto inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto inner join usuario u on u.IdUsuario=c.IdUsuario where u.IdUsuario=$IdUsuario");
+						$sql= $pdo->prepare("SELECT p.NombreProducto, p.PrecioDescuento, i.Portada, c.IdCarrito, u.IdUsuario 
+						from carrito c inner join producto p on c.IdProducto=p.IdProducto 
+						inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto 
+						inner join usuario u on u.IdUsuario=c.IdUsuario where u.IdUsuario=$IdUsuario AND Estatus='Pendiente'");
 						$sql->execute();
 						$resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
 					?>
@@ -313,10 +316,6 @@ $resultado1 = $sql1->fetch();
 					<div class="header-cart-buttons flex-w w-full">
 						<a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $IdUsuario?>" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
 							Ver Carrito
-						</a>
-
-						<a href="#" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-							Check Out
 						</a>
 					</div>
 				</div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2019 a las 01:04:37
+-- Tiempo de generación: 21-03-2019 a las 00:44:45
 -- Versión del servidor: 10.1.35-MariaDB
 -- Versión de PHP: 7.2.9
 
@@ -75,6 +75,34 @@ CREATE TABLE `carrito` (
   `IdPeso` int(11) DEFAULT NULL,
   `Estatus` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `carrito`
+--
+
+INSERT INTO `carrito` (`IdCarrito`, `Cantidad`, `IdProducto`, `IdUsuario`, `IdVendedor`, `IdCupon`, `IdPeso`, `Estatus`) VALUES
+(1, 1, 1, 1, 1, NULL, NULL, 'Pagado'),
+(2, 1, 1, 1, 1, NULL, NULL, 'Pagado'),
+(3, 1, 2, 1, 1, NULL, NULL, 'Pagado'),
+(4, 1, 2, 1, 1, NULL, NULL, 'Pagado'),
+(5, 2, 2, 1, 1, NULL, NULL, 'Pagado'),
+(6, 1, 2, 1, 1, NULL, NULL, 'Pagado'),
+(7, 1, 3, 1, 1, NULL, NULL, 'Pagado'),
+(8, 1, 1, 1, 1, NULL, NULL, 'Pagado'),
+(9, 1, 1, 1, 1, NULL, NULL, 'Pagado'),
+(10, 1, 4, 1, 1, NULL, NULL, 'Pagado'),
+(11, 1, 4, 1, 1, NULL, NULL, 'Pagado'),
+(12, 1, 1, 1, 1, NULL, NULL, 'Pagado'),
+(13, 1, 2, 1, 1, NULL, NULL, 'Pagado'),
+(14, 1, 2, 1, 1, NULL, NULL, 'Pagado'),
+(15, 1, 1, 1, 1, NULL, NULL, 'Pagado'),
+(16, 1, 2, 1, 1, NULL, NULL, 'Pagado'),
+(17, 1, 1, 1, 1, NULL, NULL, 'Pagado'),
+(18, 1, 1, 1, 1, NULL, NULL, 'Pagado'),
+(19, 1, 1, 1, 1, NULL, NULL, 'Pagado'),
+(20, 1, 1, 1, 1, NULL, NULL, 'Pagado'),
+(21, 1, 4, 1, 1, NULL, NULL, 'Pagado'),
+(22, 1, 1, 1, 1, NULL, NULL, 'Pagado');
 
 -- --------------------------------------------------------
 
@@ -202,6 +230,34 @@ CREATE TABLE `detalleventa` (
   `IdDireccionUsuario` int(11) DEFAULT NULL,
   `IdEnvio` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `detalleventa`
+--
+
+INSERT INTO `detalleventa` (`IdDetalleVenta`, `IdVenta`, `IdCarrito`, `IdDireccionVendedor`, `IdVendedor`, `IdDireccionUsuario`, `IdEnvio`) VALUES
+(223, 1, 1, NULL, 1, NULL, NULL),
+(224, 1, 2, NULL, 1, NULL, NULL),
+(225, 1, 3, NULL, 1, NULL, NULL),
+(226, 1, 4, NULL, 1, NULL, NULL),
+(227, 1, 5, NULL, 1, NULL, NULL),
+(228, 1, 6, NULL, 1, NULL, NULL),
+(229, 1, 7, NULL, 1, NULL, NULL),
+(230, 1, 8, NULL, 1, NULL, NULL),
+(231, 1, 9, NULL, 1, NULL, NULL),
+(232, 1, 10, NULL, 1, NULL, NULL),
+(233, 1, 11, NULL, 1, NULL, NULL),
+(234, 1, 12, NULL, 1, NULL, NULL),
+(235, 1, 13, NULL, 1, NULL, NULL),
+(236, 1, 14, NULL, 1, NULL, NULL),
+(237, 1, 15, NULL, 1, NULL, NULL),
+(238, 1, 16, NULL, 1, NULL, NULL),
+(239, 1, 17, NULL, 1, NULL, NULL),
+(240, 1, 18, NULL, 1, NULL, NULL),
+(241, 1, 19, NULL, 1, NULL, NULL),
+(242, 1, 20, NULL, 1, NULL, NULL),
+(243, 1, 21, NULL, 1, NULL, NULL),
+(244, 1, 22, NULL, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -340,12 +396,12 @@ CREATE TABLE `maestro` (
 --
 
 INSERT INTO `maestro` (`IdMaestro`, `Precio`, `Cantidad`, `IdProducto`) VALUES
-(2, '200.00', 1, 1),
-(3, '100.00', 8, 2),
+(2, '200.00', 4, 1),
+(3, '100.00', 6, 2),
 (4, '250.00', 10, 3),
-(5, '50.00', 10, 4),
+(5, '50.00', 9, 4),
 (7, '50.00', 10, 6),
-(8, '200.00', 9, 7);
+(8, '200.00', 10, 7);
 
 -- --------------------------------------------------------
 
@@ -442,12 +498,12 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`IdProducto`, `NombreProducto`, `Descripcion`, `Codigo`, `Precio`, `PrecioDescuento`, `Peso`, `EstadoProducto`, `EstadoPetProducto`, `Cantidad`, `IdVendedor`, `IdImagenProducto`, `IdCategoria`) VALUES
-(1, 'Anillo de Plata', 'Anillo para compromiso de plata', 123, 300, 200, '100 gr', 0, 0, 1, 1, 1, 1),
-(2, 'Correa', 'Correa de cuero para caballero', 321, 150, 100, '50gr', 0, 0, 8, 1, 2, 1),
+(1, 'Anillo de Plata', 'Anillo para compromiso de plata', 123, 300, 200, '100 gr', 0, 0, 4, 1, 1, 1),
+(2, 'Correa', 'Correa de cuero para caballero', 321, 150, 100, '50gr', 0, 0, 6, 1, 2, 1),
 (3, 'Lentes', 'Lentes para sol', 123, 550, 250, '100 gr', 0, 0, 10, 1, 3, 1),
-(4, 'Percing', 'Percing para caballero', 555, 150, 50, '50gr', 0, 0, 10, 1, 4, 1),
+(4, 'Percing', 'Percing para caballero', 555, 150, 50, '50gr', 0, 0, 7, 1, 4, 1),
 (6, 'Mica', 'Mica para pantalla ', 555, 150, 50, '50gr', 0, 0, 10, 1, 6, 2),
-(7, 'Playera', 'asdasdsadadsdasd', 98098908, 200, 150, '0', 0, 0, 9, 1, 34, 4);
+(7, 'Playera', 'asdasdsadadsdasd', 98098908, 200, 150, '0', 0, 0, 10, 1, 34, 4);
 
 -- --------------------------------------------------------
 
@@ -486,7 +542,28 @@ CREATE TABLE `productocarrito` (
 --
 
 INSERT INTO `productocarrito` (`IdCarrito`, `IdProducto`, `Talla`, `Color`, `Cantidad`) VALUES
-(3, 1, '3.5', NULL, 1);
+(1, 1, '3.5', NULL, 1),
+(2, 1, '4', NULL, 1),
+(3, 1, '3.5', NULL, 1),
+(4, 2, NULL, 'Verde', 1),
+(5, 2, NULL, 'Seleccione', 2),
+(6, 2, NULL, 'Verde', 1),
+(7, 3, NULL, 'Azul & Azul', 1),
+(8, 1, '4', NULL, 1),
+(9, 1, '5', NULL, 1),
+(10, 4, NULL, 'Dorado', 1),
+(11, 4, NULL, 'Negro', 1),
+(12, 1, '6', NULL, 1),
+(13, 2, NULL, 'Negro', 1),
+(14, 2, NULL, 'Azul', 1),
+(15, 1, '5.5', NULL, 1),
+(16, 2, NULL, 'Amarillo', 1),
+(17, 1, '6', NULL, 1),
+(18, 1, '5', NULL, 1),
+(19, 1, '4.5', NULL, 1),
+(20, 1, '5.5', NULL, 1),
+(21, 4, NULL, 'Negro', 1),
+(22, 1, '4', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -625,7 +702,7 @@ INSERT INTO `vendedor` (`IdVendedor`, `Empresa`, `IdUsuario`) VALUES
 CREATE TABLE `venta` (
   `IdVenta` int(11) NOT NULL,
   `StatusPago` int(11) NOT NULL,
-  `ClaveTransaccion` int(11) NOT NULL,
+  `ClaveTransaccion` varchar(100) NOT NULL,
   `Fecha` varchar(50) NOT NULL,
   `Cantidad` int(11) NOT NULL,
   `Total` int(11) DEFAULT NULL,
@@ -638,114 +715,19 @@ CREATE TABLE `venta` (
 --
 
 INSERT INTO `venta` (`IdVenta`, `StatusPago`, `ClaveTransaccion`, `Fecha`, `Cantidad`, `Total`, `DatosPaypal`, `Correo`) VALUES
-(1, 0, 1234, '2019-02-14', 2, 400, NULL, 'mavilah9@gmail.com'),
-(2, 0, 1, '2019-02-14 14:41:28', 2, 400, NULL, 'mavilah9@gmail.com'),
-(3, 0, 1, '2019-02-14 14:43:32', 2, 400, NULL, 'mavilah9@gmail.com'),
-(4, 0, 1, '2019-02-14 14:51:34', 2, 400, NULL, 'mavilah9@gmail.com'),
-(5, 0, 1, '2019-02-14 14:52:30', 2, 400, NULL, 'mavilah9@gmail.com'),
-(6, 0, 1, '2019-02-14 14:54:46', 2, 400, NULL, 'mavilah9@gmail.com'),
-(7, 0, 1, '2019-02-15 16:31:03', 3, 600, NULL, 'mavilah9@gmail.com'),
-(8, 0, 1, '2019-02-15 16:31:22', 3, 600, NULL, 'mavilah9@gmail.com'),
-(9, 0, 1, '2019-02-15 16:31:37', 3, 600, NULL, 'mavilah9@gmail.com'),
-(10, 0, 6, '2019-02-15 17:32:38', 3, 600, NULL, 'mavilah9@gmail.com'),
-(11, 0, 6, '2019-02-15 17:32:46', 3, 600, NULL, 'mavilah9@gmail.com'),
-(12, 0, 6, '2019-02-15 17:34:00', 3, 600, NULL, 'mavilah9@gmail.com'),
-(13, 0, 6, '2019-02-15 17:36:06', 4, 750, NULL, 'mavilah9@gmail.com'),
-(14, 0, 6, '2019-02-15 17:38:46', 4, 750, NULL, 'mavilah9@gmail.com'),
-(15, 0, 6, '2019-02-15 17:59:29', 4, 750, NULL, 'mavilah9@gmail.com'),
-(16, 0, 6, '2019-02-15 18:00:44', 4, 750, NULL, 'mavilah9@gmail.com'),
-(17, 0, 6, '2019-02-15 18:01:52', 4, 750, NULL, 'mavilah9@gmail.com'),
-(18, 0, 6, '2019-02-15 18:03:44', 4, 750, NULL, 'mavilah9@gmail.com'),
-(19, 0, 6, '2019-02-15 18:04:45', 5, 850, NULL, 'mavilah9@gmail.com'),
-(20, 0, 6, '2019-02-15 20:16:09', 5, 850, NULL, 'mavilah9@gmail.com'),
-(21, 0, 6, '2019-02-15 20:22:03', 5, 850, NULL, 'mavilah9@gmail.com'),
-(22, 0, 6, '2019-02-15 20:23:55', 5, 850, NULL, 'mavilah9@gmail.com'),
-(23, 0, 6, '2019-02-15 20:33:51', 5, 850, NULL, 'mavilah9@gmail.com'),
-(24, 0, 6, '2019-02-15 20:43:44', 4, 750, NULL, 'mavilah9@gmail.com'),
-(25, 0, 0, '2019-02-17 16:38:31', 5, 900, NULL, 'mavilah9@gmail.com'),
-(26, 0, 40, '2019-02-19 10:00:32', 0, 0, NULL, 'joseph@gmail.com'),
-(27, 0, 0, '2019-03-10 17:04:22', 2, 200, NULL, 'mavilah9@gmail.com'),
-(28, 0, 0, '2019-03-10 17:29:29', 2, 200, NULL, 'mavilah9@gmail.com'),
-(29, 0, 0, '2019-03-10 17:31:48', 2, 200, NULL, 'mavilah9@gmail.com'),
-(30, 0, 0, '2019-03-14 07:28:30', 1, 200, NULL, 'mavilah9@gmail.com'),
-(31, 0, 6, '2019-03-14 17:07:33', 1, 100, NULL, 'mavilah9@gmail.com'),
-(32, 0, 6, '2019-03-14 17:17:58', 1, 100, NULL, 'mavilah9@gmail.com'),
-(33, 0, 6, '2019-03-14 17:33:52', 1, 100, NULL, 'mavilah9@gmail.com'),
-(34, 0, 6, '2019-03-14 17:34:37', 2, 200, NULL, 'mavilah9@gmail.com'),
-(35, 0, 6, '2019-03-14 17:42:26', 2, 200, NULL, 'mavilah9@gmail.com'),
-(36, 0, 6, '2019-03-14 17:42:36', 2, 200, NULL, 'mavilah9@gmail.com'),
-(37, 0, 6, '2019-03-14 17:43:18', 1, 100, NULL, 'mavilah9@gmail.com'),
-(38, 0, 7, '2019-03-14 22:53:21', 2, 300, NULL, 'mavilah9@gmail.com'),
-(39, 0, 7, '2019-03-14 22:55:11', 2, 300, NULL, 'mavilah9@gmail.com'),
-(40, 0, 9, '2019-03-14 23:08:13', 2, 300, NULL, 'mavilah9@gmail.com'),
-(41, 0, 9, '2019-03-14 23:41:51', 5, 600, NULL, 'mavilah9@gmail.com'),
-(42, 0, 9, '2019-03-14 23:42:07', 5, 600, NULL, 'mavilah9@gmail.com'),
-(43, 0, 9, '2019-03-14 23:46:58', 2, 400, NULL, 'mavilah9@gmail.com'),
-(44, 0, 9, '2019-03-14 23:47:26', 2, 400, NULL, 'mavilah9@gmail.com'),
-(45, 0, 9, '2019-03-14 23:48:51', 2, 400, NULL, 'mavilah9@gmail.com'),
-(46, 0, 9, '2019-03-14 23:49:07', 2, 400, NULL, 'mavilah9@gmail.com'),
-(47, 0, 9, '2019-03-14 23:49:22', 2, 400, NULL, 'mavilah9@gmail.com'),
-(48, 0, 0, '2019-03-16 10:47:00', 2, 400, NULL, 'mavilah9@gmail.com'),
-(49, 0, 0, '2019-03-16 11:12:54', 1, 200, NULL, 'mavilah9@gmail.com'),
-(50, 0, 0, '2019-03-16 11:22:15', 1, 100, NULL, 'mavilah9@gmail.com'),
-(51, 0, 0, '2019-03-16 11:22:29', 1, 100, NULL, 'mavilah9@gmail.com'),
-(52, 0, 0, '2019-03-16 11:22:45', 1, 100, NULL, 'mavilah9@gmail.com'),
-(53, 0, 0, '2019-03-16 11:22:56', 1, 100, NULL, 'mavilah9@gmail.com'),
-(54, 0, 0, '2019-03-16 11:34:47', 1, 100, NULL, 'mavilah9@gmail.com'),
-(55, 0, 0, '2019-03-16 11:37:23', 1, 100, NULL, 'mavilah9@gmail.com'),
-(56, 0, 0, '2019-03-16 11:41:05', 1, 100, NULL, 'mavilah9@gmail.com'),
-(57, 0, 0, '2019-03-16 11:43:53', 1, 200, NULL, 'mavilah9@gmail.com'),
-(58, 0, 0, '2019-03-16 11:48:58', 1, 200, NULL, 'mavilah9@gmail.com'),
-(59, 0, 0, '2019-03-16 11:51:14', 1, 200, NULL, 'mavilah9@gmail.com'),
-(60, 0, 0, '2019-03-16 11:55:29', 1, 200, NULL, 'mavilah9@gmail.com'),
-(61, 0, 0, '2019-03-16 12:37:35', 1, 100, NULL, 'mavilah9@gmail.com'),
-(62, 0, 0, '2019-03-16 13:04:19', 1, 200, NULL, 'mavilah9@gmail.com'),
-(63, 0, 0, '2019-03-16 13:05:43', 2, 300, NULL, 'mavilah9@gmail.com'),
-(64, 0, 0, '2019-03-16 13:09:27', 2, 200, NULL, 'mavilah9@gmail.com'),
-(65, 0, 0, '2019-03-16 13:13:54', 2, 300, NULL, 'mavilah9@gmail.com'),
-(66, 0, 7, '2019-03-18 11:56:14', 4, 400, NULL, 'mavilah9@gmail.com'),
-(67, 0, 0, '2019-03-18 11:57:14', 2, 400, NULL, 'mavilah9@gmail.com'),
-(68, 0, 0, '2019-03-18 11:59:22', 2, 400, NULL, 'mavilah9@gmail.com'),
-(69, 0, 0, '2019-03-18 11:59:51', 2, 400, NULL, 'mavilah9@gmail.com'),
-(70, 0, 0, '2019-03-18 12:00:09', 2, 400, NULL, 'mavilah9@gmail.com'),
-(71, 0, 0, '2019-03-18 12:01:43', 2, 400, NULL, 'mavilah9@gmail.com'),
-(72, 0, 0, '2019-03-18 12:02:48', 2, 400, NULL, 'mavilah9@gmail.com'),
-(73, 0, 0, '2019-03-18 12:04:36', 2, 400, NULL, 'mavilah9@gmail.com'),
-(74, 0, 0, '2019-03-18 12:06:31', 2, 400, NULL, 'mavilah9@gmail.com'),
-(75, 0, 0, '2019-03-18 12:06:51', 2, 400, NULL, 'mavilah9@gmail.com'),
-(76, 0, 0, '2019-03-18 12:07:30', 2, 400, NULL, 'mavilah9@gmail.com'),
-(77, 0, 0, '2019-03-18 12:08:32', 2, 400, NULL, 'mavilah9@gmail.com'),
-(78, 0, 0, '2019-03-18 12:12:29', 2, 400, NULL, 'mavilah9@gmail.com'),
-(79, 0, 0, '2019-03-18 12:14:14', 2, 400, NULL, 'mavilah9@gmail.com'),
-(80, 0, 0, '2019-03-18 12:14:38', 2, 400, NULL, 'mavilah9@gmail.com'),
-(81, 0, 0, '2019-03-18 12:14:51', 2, 400, NULL, 'mavilah9@gmail.com'),
-(82, 0, 0, '2019-03-18 12:15:55', 2, 400, NULL, 'mavilah9@gmail.com'),
-(83, 0, 0, '2019-03-18 12:17:17', 2, 400, NULL, 'mavilah9@gmail.com'),
-(84, 0, 0, '2019-03-18 12:17:47', 2, 400, NULL, 'mavilah9@gmail.com'),
-(85, 0, 0, '2019-03-18 12:18:11', 2, 400, NULL, 'mavilah9@gmail.com'),
-(86, 0, 0, '2019-03-18 12:18:50', 2, 400, NULL, 'mavilah9@gmail.com'),
-(87, 0, 0, '2019-03-18 12:19:04', 2, 400, NULL, 'mavilah9@gmail.com'),
-(88, 0, 0, '2019-03-18 12:19:53', 2, 400, NULL, 'mavilah9@gmail.com'),
-(89, 0, 0, '2019-03-18 12:20:07', 2, 400, NULL, 'mavilah9@gmail.com'),
-(90, 0, 0, '2019-03-18 12:20:20', 2, 400, NULL, 'mavilah9@gmail.com'),
-(91, 0, 0, '2019-03-18 12:21:48', 2, 400, NULL, 'mavilah9@gmail.com'),
-(92, 0, 0, '2019-03-18 12:22:11', 2, 400, NULL, 'mavilah9@gmail.com'),
-(93, 0, 0, '2019-03-18 12:22:52', 2, 400, NULL, 'mavilah9@gmail.com'),
-(94, 0, 0, '2019-03-18 12:23:15', 2, 400, NULL, 'mavilah9@gmail.com'),
-(95, 0, 0, '2019-03-18 12:23:27', 2, 400, NULL, 'mavilah9@gmail.com'),
-(96, 0, 0, '2019-03-18 12:23:43', 2, 400, NULL, 'mavilah9@gmail.com'),
-(97, 0, 0, '2019-03-18 12:24:38', 2, 400, NULL, 'mavilah9@gmail.com'),
-(98, 0, 0, '2019-03-18 12:25:11', 2, 400, NULL, 'mavilah9@gmail.com'),
-(99, 0, 0, '2019-03-18 12:37:55', 2, 400, NULL, 'mavilah9@gmail.com'),
-(100, 0, 0, '2019-03-18 12:41:53', 1, 200, NULL, 'mavilah9@gmail.com'),
-(101, 0, 0, '2019-03-18 12:42:28', 2, 300, NULL, 'mavilah9@gmail.com'),
-(102, 0, 0, '2019-03-18 14:52:32', 1, 200, NULL, 'mavilah9@gmail.com'),
-(103, 0, 0, '2019-03-19 10:00:55', 1, 200, NULL, 'mavilah9@gmail.com'),
-(104, 0, 0, '2019-03-19 10:06:30', 1, 200, NULL, 'mavilah9@gmail.com'),
-(105, 0, 0, '2019-03-19 10:10:29', 1, 200, NULL, 'mavilah9@gmail.com'),
-(106, 0, 0, '2019-03-19 10:16:38', 1, 200, NULL, 'mavilah9@gmail.com'),
-(107, 0, 0, '2019-03-19 10:22:27', 1, 200, NULL, 'mavilah9@gmail.com'),
-(108, 0, 0, '2019-03-19 17:07:37', 1, 200, NULL, 'mavilah9@gmail.com');
+(1, 0, '1ff602o1c1v16s68hrag26ksr8', '2019-03-20 17:38:51', 1, 200, 'EC-66S0500774181773X', 'mavilah9@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `visualizado`
+--
+
+CREATE TABLE `visualizado` (
+  `IdVisualizado` int(11) NOT NULL,
+  `IdProducto` int(11) NOT NULL,
+  `IdUsuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -964,6 +946,14 @@ ALTER TABLE `venta`
   ADD PRIMARY KEY (`IdVenta`);
 
 --
+-- Indices de la tabla `visualizado`
+--
+ALTER TABLE `visualizado`
+  ADD PRIMARY KEY (`IdVisualizado`),
+  ADD KEY `IdProducto` (`IdProducto`),
+  ADD KEY `IdUsuario` (`IdUsuario`);
+
+--
 -- Indices de la tabla `wishlist`
 --
 ALTER TABLE `wishlist`
@@ -991,7 +981,7 @@ ALTER TABLE `caracteristicas`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `IdCarrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IdCarrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
@@ -1021,7 +1011,7 @@ ALTER TABLE `detalle`
 -- AUTO_INCREMENT de la tabla `detalleventa`
 --
 ALTER TABLE `detalleventa`
-  MODIFY `IdDetalleVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IdDetalleVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
 
 --
 -- AUTO_INCREMENT de la tabla `direccionusuario`
@@ -1117,7 +1107,13 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `IdVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `IdVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `visualizado`
+--
+ALTER TABLE `visualizado`
+  MODIFY `IdVisualizado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `wishlist`
@@ -1265,6 +1261,13 @@ ALTER TABLE `valor`
 --
 ALTER TABLE `vendedor`
   ADD CONSTRAINT `RefUsuario40` FOREIGN KEY (`IdUsuario`) REFERENCES `usuario` (`IdUsuario`);
+
+--
+-- Filtros para la tabla `visualizado`
+--
+ALTER TABLE `visualizado`
+  ADD CONSTRAINT `visualizado_ibfk_1` FOREIGN KEY (`IdProducto`) REFERENCES `producto` (`IdProducto`),
+  ADD CONSTRAINT `visualizado_ibfk_2` FOREIGN KEY (`IdUsuario`) REFERENCES `usuario` (`IdUsuario`);
 
 --
 -- Filtros para la tabla `wishlist`

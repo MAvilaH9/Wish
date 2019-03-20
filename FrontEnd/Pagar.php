@@ -152,7 +152,7 @@ if ($_POST) {
                         onAuthorize: function (data, actions) {
                             return actions.payment.execute().then(function () {
                                 console.log(data);
-                                window.location="Pagar.1.php?paymentToken="+data.paymentToken                              
+                                window.location="Pagar.1.php?Cantidad=<?php echo $cant?>&IdVenta=<?php echo $idVenta?>&paymentToken="+data.paymentToken                              
                             });
                         }
                     }, '#paypal-button-container');

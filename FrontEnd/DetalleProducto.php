@@ -3,30 +3,42 @@ include "Template/Header.php";
 include "../Recursos/Conexion.php";
 
 
-is_numeric($_GET['IdProducto']);
-  $idProducto = $_GET['IdProducto'];
-  //Agregar producto a la session
-  if (!isset($_SESSION['visualizado'])) {
-      $productos = array(
-        'IdProducto'=>$idProducto,
-      );
-      $_SESSION['visualizado'][0]=$productos;
-  }else{
-      //Esto es par ano agregar doblemete un producto
-      //Que el producto selecionado no este dentro del carrito
-      $idProductos = array_column($_SESSION['visualizado'],"IdProducto");
-      if (in_array($idProducto,$idProductos)) {
-      }else {
-      $numeroProductos = count($_SESSION['visualizado']);
-      $productos=array(
-        'IdProducto'=>$idProducto,
-      );
-      $_SESSION['visualizado'][$numeroProductos]=$productos;
-      }
-  }
+$IdUsuario=$_SESSION['IdUsuario'];
+$IdProducto=$_GET['IdProducto'];
+
+$sql_agregar = 'INSERT INTO visualizado (IdProducto,IdUsuario) VALUES (?,?)';
+$sentencia_agregar = $pdo->prepare($sql_agregar);
+
+if ($sentencia_agregar->execute(array($IdProducto, $IdUsuario))) {
+    
+} else {
+    die();
+}
+
+// // is_numeric($_GET['IdProducto']);
+//   $IdProducto = $_GET['IdProducto'];
+//   //Agregar producto a la session
+//   if (!isset($_SESSION['visualizado'])) {
+//       $productos = array(
+//         'IdProducto'=>$IdProducto,
+//       );
+//       $_SESSION['visualizado'][0]=$productos;
+//   }else{
+//       //Esto es par ano agregar doblemete un producto
+//       //Que el producto selecionado no este dentro del carrito
+//       $IdProducto = array_column($_SESSION['visualizado'],"IdProducto");
+//       if (in_array($IdProducto,$IdProducto)) {
+//       }else {
+//       $numeroProductos = count($_SESSION['visualizado']);
+//       $productos=array(
+//         'IdProducto'=>$IdProducto,
+//       );
+//       $_SESSION['visualizado'][$numeroProductos]=$productos;
+//       }
+//   }
   
-$idProducto=$_SESSION['visualizado'];
-// var_dump($idProducto);
+// $IdProducto=$_SESSION['visualizado'];
+// // var_dump($IdProducto);
 ?>
 
 
@@ -177,7 +189,7 @@ $idProducto=$_SESSION['visualizado'];
                                 <div class="size-203 flex-c-m respon6">
                                 <input type="hidden" name="IdMaestro" value="<?php echo $dato['IdMaestro']; ?>">
                                     <?php
-                                    if ($dato['NombreCaracteristica'] =='Talla') {?>
+                                    if ($dato['NombreCaracteristica'] != '') {?>
                                     <?php echo $dato['NombreCaracteristica'];?>
                                     <?php } ?>
                                 </div>
