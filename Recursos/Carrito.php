@@ -17,7 +17,7 @@ $Estatus = 'Pendiente';
     inner join usuario u on u.IdUsuario=c.IdUsuario 
     inner join vendedor v on p.IdVendedor=v.IdVendedor
     inner join maestro m on m.IdProducto=p.IdProducto
-    inner join productocarrito pc on pc.IdCarrito=c.IdCarrito where c.IdUsuario=$IdUsuario AND Estatus=0");
+    inner join productocarrito pc on pc.IdCarrito=c.IdCarrito where c.IdUsuario=$IdUsuario AND Estatus='Pendiente'");
     $sql -> execute(array($IdProducto));
     $resultado = $sql->fetch();
     $talla=$resultado['Talla'];

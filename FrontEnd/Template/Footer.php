@@ -256,6 +256,9 @@
 	</div>-->
 
 <!--===============================================================================================	-->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+<!--===============================================================================================	-->
 	<script src="js/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="js/animsition.min.js"></script>
@@ -300,41 +303,42 @@
 <!--===============================================================================================-->
 	<script src="js/isotope.pkgd.min.js"></script>
 <!--===============================================================================================-->
-	<script src="js/sweetalert.min.js"></script>
+	<!-- <script src="js/sweetalert.min.js"></script> -->
+
 	<script>
-		$('.js-addwish-b2').on('click', function(e){
-			e.preventDefault();
-		});
+		// $('.js-addwish-b2').on('click', function(e){
+		// 	e.preventDefault();
+		// });
 
-		$('.js-addwish-b2').each(function(){
-			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "Agregado a wishlist !", "success");
+		// $('.js-addwish-b2').each(function(){
+		// 	var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+		// 	$(this).on('click', function(){
+		// 		swal(nameProduct, "Agregado a wishlist !", "success");
 
-				$(this).addClass('js-addedwish-b2');
-				$(this).off('click');
-			});
-		});
+		// 		$(this).addClass('js-addedwish-b2');
+		// 		$(this).off('click');
+		// 	});
+		// });
 
-		$('.js-addwish-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+		// $('.js-addwish-detail').each(function(){
+		// 	var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
 
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
+		// 	$(this).on('click', function(){
+		// 		swal(nameProduct, "is added to wishlist !", "success");
 
-				$(this).addClass('js-addedwish-detail');
-				$(this).off('click');
-			});
-		});
+		// 		$(this).addClass('js-addedwish-detail');
+		// 		$(this).off('click');
+		// 	});
+		// });
 
-		/*---------------------------------------------*/
+		// /*---------------------------------------------*/
 
-		$('.js-addcart-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "Producto agregado al carrito !", "success");
-			});
-		});
+		// $('.js-addcart-detail').each(function(){
+		// 	var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+		// 	$(this).on('click', function(){
+		// 		swal(nameProduct, "Producto agregado al carrito !", "success");
+		// 	});
+		// });
 	
 	</script>
 <!--===============================================================================================-->

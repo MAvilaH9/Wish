@@ -104,7 +104,16 @@ $resultado = $sql->fetch();
 							</table>
 						</div>
 
-							<input class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10" type="submit" value="Actualizar Carrito">
+						<div class="row">
+							<div class="col-md-4">
+								<input class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10" type="submit" value="Actualizar Carrito">
+							</div>
+							<div class="col-md-4">
+							</div>
+							<div class="col-md-4">
+								<a href="Productos.php" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">Ver más Productos</a>
+							</div>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -177,7 +186,7 @@ $resultado = $sql->fetch();
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<img src="images/carrito.png" alt="">
 					</div>
-					<a href="Index.php" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Continuar
+					<a href="Productos.php" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Continuar
 						Comprando</a>
 				</div>
 			</div>

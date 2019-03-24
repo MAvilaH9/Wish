@@ -6,15 +6,22 @@ include "../Recursos/Conexion.php";
 $IdUsuario=$_SESSION['IdUsuario'];
 $IdProducto=$_GET['IdProducto'];
 
-$sql_agregar = 'INSERT INTO visualizado (IdProducto,IdUsuario) VALUES (?,?)';
-$sentencia_agregar = $pdo->prepare($sql_agregar);
+$sql = $pdo->prepare("SELECT * FROM visualizado where IdUsuario=$IdUsuario");
+$sql -> execute(array($IdProducto));
+$resultado = $sql->fetch();
+$Producto=$resultado['IdProducto'];
 
-if ($sentencia_agregar->execute(array($IdProducto, $IdUsuario))) {
-    
-} else {
-    die();
+if ($IdProducto!=$Producto) {
+
+    $sql_agregar='INSERT INTO visualizado (IdProducto,IdUsuario) VALUES (?,?)';
+    $sentencia_agregar = $pdo->prepare($sql_agregar);
+
+    if ($sentencia_agregar->execute(array($IdProducto, $IdUsuario))) {
+        
+    } else {
+        die();
+    }
 }
-
 // // is_numeric($_GET['IdProducto']);
 //   $IdProducto = $_GET['IdProducto'];
 //   //Agregar producto a la session
@@ -57,6 +64,7 @@ if ($sentencia_agregar->execute(array($IdProducto, $IdUsuario))) {
         $sql -> execute(array($IdProducto));
         $resultado = $sql->fetch();
         $idVendedor=$resultado['IdVendedor'];
+        $Caracteristica=$resultado['NombreCaracteristica'];
         ?>
         <div class="row">
             <div class="col-md-6 col-lg-7 p-b-30">
@@ -174,42 +182,47 @@ if ($sentencia_agregar->execute(array($IdProducto, $IdUsuario))) {
                     <!--  -->
                     <div class="p-t-33">
                         <form action="../Recursos/Carrito.php" method="Post">
-                            <?php 
-                            $IdProducto=$_GET['IdProducto'];
-                            $sql= $pdo->prepare("SELECT c.NombreCaracteristica,v.IdValor, v.Valor,m.Precio,m.Cantidad,m.IdMaestro from detalle d 
-                            inner join maestro m on m.IdMaestro=d.IdMaestro
-                            inner join valor v on d.IdValor=v.IdValor
-                            inner join caracteristicas c on c.IdCaracteristicas=v.IdCaracteristicas 
-                            inner join producto p on p.IdProducto=c.IdProducto where m.IdProducto=$IdProducto AND c.NombreCaracteristica= 'Talla'");
-                            $sql->execute();
-                            $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
-                            foreach ($resultado as $dato) {
-                            }?>
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">
-                                <input type="hidden" name="IdMaestro" value="<?php echo $dato['IdMaestro']; ?>">
-                                    <?php
-                                    if ($dato['NombreCaracteristica'] != '') {?>
-                                    <?php echo $dato['NombreCaracteristica'];?>
-                                    <?php } ?>
-                                </div>
-
-                                <div class="size-204 respon6-next">
-                                    <div class="rs1-select2 bor8 bg0">
-                                        <?php 
-                                        if ($dato['NombreCaracteristica'] =='Talla'){
-                                        echo '<select class="js-select2" name="Valort" required>';
-                                        echo '<option>Seleccione</option>';
-                                        foreach ($resultado as $dato) {
-                                            echo '<option value="'.$dato['Valor'].'">'.$dato['Valor'].'</option>';
-                                        }
-                                        echo'</select>';
-                                        }?>
-                                        <div class="dropDownSelect2"></div>
+                            <?php
+                            if (!empty($Caracteristica=="Talla")) {?>
+                                <?php 
+                                $IdProducto=$_GET['IdProducto'];
+                                $sql= $pdo->prepare("SELECT c.NombreCaracteristica,v.IdValor, v.Valor,m.Precio,m.Cantidad,m.IdMaestro from detalle d 
+                                inner join maestro m on m.IdMaestro=d.IdMaestro
+                                inner join valor v on d.IdValor=v.IdValor
+                                inner join caracteristicas c on c.IdCaracteristicas=v.IdCaracteristicas 
+                                inner join producto p on p.IdProducto=c.IdProducto where m.IdProducto=$IdProducto AND c.NombreCaracteristica= 'Talla'");
+                                $sql->execute();
+                                $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
+                                foreach ($resultado as $dato) {
+                                }?>
+                                <div class="flex-w flex-r-m p-b-10">
+                                    <div class="size-203 flex-c-m respon6">
+                                    <input type="hidden" name="IdMaestro" value="<?php echo $dato['IdMaestro']; ?>">
+                                        <?php
+                                        if (!empty($dato['NombreCaracteristica'] == 'Talla')) {?>
+                                        <?php echo $dato['NombreCaracteristica'];?>
+                                        <?php } ?>
+                                    </div>
+    
+                                    <div class="size-204 respon6-next">
+                                        <div class="rs1-select2 bor8 bg0">
+                                            <?php 
+                                            if (!empty($dato['NombreCaracteristica'] == 'Talla')){
+                                            echo '<select class="js-select2" name="Valort" required>';
+                                            echo '<option>Seleccione</option>';
+                                            foreach ($resultado as $dato) {
+                                                echo '<option value="'.$dato['Valor'].'">'.$dato['Valor'].'</option>';
+                                            }
+                                            echo'</select>';
+                                            }?>
+                                            <div class="dropDownSelect2"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            
+                            <?php
+                            }
+                        
+                            ?>    
                             <?php 
                             $IdProducto=$_GET['IdProducto'];
                             $sql= $pdo->prepare("SELECT c.NombreCaracteristica,v.IdValor, v.Valor,m.Precio,m.Cantidad,m.IdMaestro from detalle d 
@@ -266,7 +279,7 @@ if ($sentencia_agregar->execute(array($IdProducto, $IdUsuario))) {
                                     <input type="hidden" name="IdProducto" value="<?php echo $IdProducto;?>">
                                     <input type="hidden" name="IdVendedor" value="<?php echo $idVendedor;?>">
                                     <br>
-                                    <input type="submit" value="Agregar al Carrito" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                    <input type="submit" value="Agregar al Carrito" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04" onclick="funcionalert();">
                                     <br> <br> <br>
                                     <a href="Index.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Cancelar</a>
                                 </div>
@@ -302,6 +315,17 @@ if ($sentencia_agregar->execute(array($IdProducto, $IdUsuario))) {
         </div>
     </div>
 </section>
+
+<script>
+function funcionalert() {
+    Swal(
+  'Producto Agregado al Carrito!',
+  'You clicked the button!',
+  'success'
+)
+}
+</script>
+
 <?php   
 include "Template/Footer.php";
 ?>
