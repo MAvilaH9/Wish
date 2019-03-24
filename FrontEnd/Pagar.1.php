@@ -59,8 +59,8 @@ $sentencia->execute();
 							<img src="../FrontEnd/imgProductos/<?php echo $dato['Portada'];?>" alt="IMG">
 							<input type="hidden" name="IdCarrito" value="<?php echo $dato['IdCarrito'];?>">
 						</div>
-					</td>
-					<td class="column-2">
+					</td><br>
+					<td class="column-2"> 
 						<?php echo $dato['NombreProducto']?>
 					</td>
 					<td class="column-3">

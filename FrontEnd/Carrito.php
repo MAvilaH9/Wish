@@ -39,7 +39,7 @@ $resultado = $sql->fetch();
 									<th class="column-8"></th>
 								</tr>
 								<?php 
-									$IdUsuario =$_GET['IdUsuario'];
+									$IdUsuario =$_SESSION['IdUsuario'];
 									$sql= $pdo->prepare("SELECT c.IdCarrito, i.Portada,p.IdProducto,p.NombreProducto, pc.Talla,pc.Color, c.Cantidad, c.Estatus, m.Precio, m.IdMaestro,u.IdUsuario, v.IdVendedor
 									from carrito c inner join producto p on c.IdProducto=p.IdProducto 
 									inner join imagenproducto i on i.IdImagenProducto= p.IdImagenProducto 
@@ -126,52 +126,71 @@ $resultado = $sql->fetch();
 			</script>
 
 			<div class="col-sm-10 col-lg-7 col-xl-8 m-lr-auto m-b-50">
-				<form class="bg0 p-t-75 p-b-85" action="../FrontEnd/Pagar.php" method="Post">
 					<div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-63 m-r-40 m-lr-0-xl p-lr-15-sm">
-						<h4 class="mtext-109 cl2 p-b-30">
-							Mis Productos
-						</h4>
-
-						<div class="flex-w flex-t p-t-27 p-b-33">
-							<div class="flex-w flex-m m-r-20 m-tb-5">
-								<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="cupon" placeholder="Código de Cupón">
-
-								<div class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
-									Aplicar
+						<form action="../Recursos/Cupon.php" method="Post">
+							<h4 class="mtext-109 cl2 p-b-30">
+								Mis Productos
+							</h4>
+							<div class="flex-w flex-t p-t-27 p-b-33">
+								<div class="flex-w flex-m m-r-20 m-tb-5">
+									<input class="stext-104 cl2 plh4 size-117 bor13 p-lr-20 m-r-10 m-tb-5" type="text" name="Cupon" placeholder="Código de Cupón">
+									<input type="hidden" name="IdCarrito" value="<?php echo $dato['IdCarrito'] ?>">
+									<button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
+										Aplicar
+									</button>
 								</div>
 							</div>
+						</form>
+						<form action="../FrontEnd/Pagar.php" method="Post">
+						<?php
+						if (isset($_GET['IdCupon'])) {
+							$IdCupon=$_GET['IdCupon'];
+							$sql = $pdo->prepare("SELECT * from cupon where IdCupon=?");
+							$sql -> execute(array($IdCupon));
+							$resultado = $sql->fetch();
+							$Porcentaje=$resultado['Porcentaje'];
+							if (!empty($Porcentaje!=0)) {
+								$tt=(($total*$Porcentaje)/100);
+								$total=($total-$tt);
+							}
+						}
+						?>
+							<div class="flex-w flex-t p-t-27 p-b-33">
+								<div class="size-208"><br>
+									<hr>
+									<span class="mtext-101 cl2">
+										Total:
+									</span>
+								</div>
 
-							<div class="size-208"><br>
-								<hr>
-								<span class="mtext-101 cl2">
-									Total:
-								</span>
+								<div class="size-209 p-t-1"><br>
+									<hr>
+									<?php
+
+									?>
+									<span class="mtext-110 cl2">
+										$
+										<?php echo number_format($total,2);?>
+									</span>
+								</div>
 							</div>
+							<input type="hidden" name="IdUsuario">
+							<input type="hidden" name="IdVendedor" value="<?php echo $dato['IdVendedor'] ?>">
+							<input type="hidden" name="IdMaestro" value="<?php echo $dato['IdMaestro'] ?>">
+							<input type="hidden" name="IdProducto" value="<?php echo $dato['IdProducto'] ?>">
+							<input type="hidden" name="IdCarrito" value="<?php echo $dato['IdCarrito'] ?>">
+							<input type="hidden" name="Cantidad" value="<?php echo $cant?>">
+							<input type="hidden" name="Total" value="<?php echo $total?>">
+							<input type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" value="Pagar">
 
-							<div class="size-209 p-t-1"><br>
-								<hr>
-								<span class="mtext-110 cl2">
-									$
-									<?php echo number_format($total,2);?>
-								</span>
-							</div>
-						</div>
-						<input type="hidden" name="IdUsuario">
-						<input type="hidden" name="IdVendedor" value="<?php echo $dato['IdVendedor'] ?>">
-						<input type="hidden" name="IdMaestro" value="<?php echo $dato['IdMaestro'] ?>">
-						<input type="hidden" name="IdProducto" value="<?php echo $dato['IdProducto'] ?>">
-						<input type="hidden" name="IdCarrito" value="<?php echo $dato['IdCarrito'] ?>">
-						<input type="hidden" name="Cantidad" value="<?php echo $cant?>">
-						<input type="hidden" name="Total" value="<?php echo $total?>">
-						<input type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" value="Pagar">
+							<!-- <a href="RegDireccion.php" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Pagar</a> -->
 
-						<!-- <a href="RegDireccion.php" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">Pagar</a> -->
-
-						<!-- <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-								Pagar
-							</button> -->
+							<!-- <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+									Pagar
+								</button> -->
+						</form>
 					</div>
-				</form>
+				
 			</div>
 			<?php } else {?>
 			<div class="col-sm-10 col-lg-7 col-xl-8 m-lr-auto m-b-50">

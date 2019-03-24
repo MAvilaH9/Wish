@@ -4,7 +4,7 @@
 session_start();
 include "Conexion.php";
 $IdUsuario=$_SESSION['IdUsuario'];
-$sentencia=$pdo->prepare("DELETE FROM visualizado WHERE IdUsuario=$IdUsuario");
+$sentencia=$pdo->prepare("TRUNCATE visualizado");
 $sentencia -> execute();
 // Destruir todas las variables de sesión.
 $_SESSION = array();

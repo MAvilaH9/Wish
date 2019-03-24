@@ -6,7 +6,7 @@ include "../Recursos/Conexion.php";
 $IdUsuario=$_SESSION['IdUsuario'];
 $IdProducto=$_GET['IdProducto'];
 
-$sql = $pdo->prepare("SELECT * FROM visualizado where IdUsuario=$IdUsuario");
+$sql = $pdo->prepare("SELECT * FROM visualizado where IdProducto=$IdProducto and IdUsuario=$IdUsuario");
 $sql -> execute(array($IdProducto));
 $resultado = $sql->fetch();
 $Producto=$resultado['IdProducto'];
