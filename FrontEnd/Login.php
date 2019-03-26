@@ -63,22 +63,20 @@ if (isset($_SESSION['nombre'])) {
 					<div class="container-login100-form-btn">
 						<input type="submit" class="login100-form-btn" value="Iniciar Sesión">
 					</div>
-
+					<br> <hr>
 					<div class="text-center p-t-12">
-						<span class="txt1">
-							Olvidó
-						</span>
-						<a class="txt2" href="#">
-							Usuario / Contraseña?
-						</a>
-					</div>
-
-					<div class="text-center p-t-136">
 						<a class="txt2" href="Registro.php">
 							Registrarse
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>
 					</div>
+
+					<!-- <div class="text-center p-t-136">
+						<a class="txt2" href="Registro.php">
+							Registrarse
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div> -->
 				</form>
 			</div>
 		</div>

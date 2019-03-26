@@ -98,20 +98,20 @@ $resultado1 = $sql1->fetch();
 								<ul class="sub-menu">
 									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=1">Accesorios</a></li>
 									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=2">Accesorios de teléfono</a></li>
-									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=3">Deportes y actividades al aire libre</a></li>
+									<!-- <li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=3">Deportes y actividades al aire libre</a></li> -->
 									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=4">Moda</a></li>
 									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=5">Blusas</a></li>
 									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=6">Zapatos</a></li>
-									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=7">Cuidado personal</a></li>
+									<!-- <li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=7">Cuidado personal</a></li> -->
 									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=8">Aparatos electrónicos</a></li>
 									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=9">Pasatiempos</a></li>
 									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=10">Relojes</a></li>
 									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=11">Automotriz</a></li>
 									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=12">Piezas y accesorios</a></li>
 									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=13">Carteras y bolsos</a></li>
-									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=14">Teléfonos inteligentes</a></li>
+									<!-- <li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=14">Teléfonos inteligentes</a></li> -->
 									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=15">Decoración del hogar</a></li>
-									<li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=16">Relojes analógicos</a></li>
+									<!-- <li><a href="../FrontEnd/ProductoCategoria.php?IdCategoria=16">Relojes analógicos</a></li> -->
 								</ul>
 							</li>
 						</ul>
@@ -126,7 +126,7 @@ $resultado1 = $sql1->fetch();
 								if ($_SESSION['IdPerfil'] == 3)?> <?php{
 								?>	
 								<ul class="sub-menu">
-									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
+									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?><br> <hr></a></li>
 									<li><a href="../FrontEnd/ListaDeseos.php">Lista de Deseos</a></li>
 									<li><a href="../FrontEnd/HistorialCompras.php">Historial de Compras</a></li>
 									<li><a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $_SESSION['IdUsuario'] ?>">Carrito de Compras</a></li> <hr>
@@ -142,7 +142,7 @@ $resultado1 = $sql1->fetch();
 								if ($_SESSION['IdPerfil'] == 2) ?> <?php{
 								?>
 								<ul class="sub-menu">
-									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
+									<li><a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br> <hr></a></li>
 									<li><a href="../BackEnd/Index.php">Administrar Productos</a></li>
 									<li><a href="../FrontEnd/ListaDeseos.php">Lista de Deseos</a></li>
 									<li><a href="../FrontEnd/HistorialCompras.php">Historial de Compras</a></li>
@@ -187,7 +187,7 @@ $resultado1 = $sql1->fetch();
 						<li>
 							<a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?></a>
 							<ul class="sub-menu">
-								<li><a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ver Perfil <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i> <br> <hr></a></li>
+								<li><a href="#"><img src="images/usuario.png" alt="">&nbsp;<?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp' .$_SESSION["Apellidos"];?> <br> <hr></a></li>
 								<li><a href="#">Lista de Deseos</a></li> 
 								<li><a href="../FrontEnd/Carrito.php?IdUsuario=<?php echo $_SESSION['IdUsuario'] ?>">Carrito de Compras</a></li> <hr>
 								<li><a href="#">Historial de Pedidos</a></li>

@@ -107,7 +107,7 @@ $IdProducto=$producto['IdProducto'];
                                 <div class="col-sm-4">
                                 </div>
                                 <div class="col-sm-4">
-                                    <!-- <button onclick="AlmacenarProducto()" class="btn btn-primary btn-block">Terminar</button> -->
+                                    <a href="Productos.php" class="btn btn-primary btn-block">Terminar</a>
                                 </div>
                                 <div class="col-sm-4">
                                 </div>
