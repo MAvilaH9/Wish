@@ -2,6 +2,11 @@
 require_once ('Conexion.php');
 
     session_start();
+    $IdUsuario=$_SESSION['IdUsuario'];
+    $sql = $pdo->prepare("SELECT * FROM vendedor where IdUsuario=$IdUsuario");
+    $sql -> execute(array($IdUsuario));
+    $resultado = $sql->fetch();
+    $IdVendedor=$resultado['IdVendedor'];
 
     $imagen=$_FILES['imagen']['name'];
     $archivo=$_FILES['imagen']['tmp_name'];
@@ -23,10 +28,9 @@ require_once ('Conexion.php');
         $PrecioDescuento=$_REQUEST['Preciodescuento'];
         $Codigo=$_REQUEST['Codigo'];
         $Cantidad=$_REQUEST['Cantidad'];
-        $Peso=$_REQUEST['Peso'];
+        $Peso=0;
         $Estadoprod=0;
         $EstadoPetProducto=0;
-        $IdVendedor=$_SESSION['IdVendedor'];
     
         $sql_agregar = 'INSERT INTO producto (NombreProducto,Descripcion,Codigo,Precio,PrecioDescuento,Peso,EstadoProducto,EstadoPetProducto,Cantidad,IdVendedor,IdImagenProducto,IdCategoria) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
         $sentencia_agregar = $pdo->prepare($sql_agregar);

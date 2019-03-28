@@ -83,6 +83,7 @@ if (!$resultado) {?>
 
 </body>
 </html>
+
   <?php  echo'No existe usuario';
     die();
 }
@@ -102,11 +103,11 @@ if ($contrasenia == $resultado['Contrasenia']  && $resultado['Correo'] == $corre
         
     } 
 
-    if($resultado['IdPerfil'] == 1){
-            header('location:../BackEnd/Index.php');
-    }
+    if($resultado['IdPerfil']==1){
+        header('location:../BackEnd/IndexAdmin.php');
+	}
 }
 else{
-    header('location:../FrontEnd/Login.php');
+    header('location: ../FrontEnd/Login.php');
 }
 ?>

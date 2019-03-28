@@ -22,13 +22,13 @@ $IdProducto=$producto['IdProducto'];
                                     <div class="col-sm-3">
                                         <label>Talla</label>
                                         <input name="ValorTalla" type="text" class="form-control" placeholder="Nombre"
-                                            required>
+                                            >
 
                                     </div>
                                     <div class="col-sm-3">
                                         <label>Color</label>
                                         <input name="ValorColor" type="text" class="form-control" placeholder="Nombre"
-                                            required>
+                                            >
                                     </div>
                                     <div class="col-sm-3">
                                         <label>Cantidad</label>
@@ -46,7 +46,7 @@ $IdProducto=$producto['IdProducto'];
                                 </div>
                             </form>
                             <?php 
-							$sql= $pdo->prepare("SELECT c.NombreCaracteristica, v.Valor,m.Precio,m.Cantidad from detalle d 
+							$sql= $pdo->prepare("SELECT c.NombreCaracteristica, v.Valor,m.Precio,m.Cantidad, d.IdDetalle, m.IdMaestro from detalle d 
                             inner join maestro m on m.IdMaestro=d.IdMaestro
                             inner join valor v on d.IdValor=v.IdValor
                             inner join caracteristicas c on c.IdCaracteristicas=v.IdCaracteristicas where m.IdProducto=$IdProducto and c.NombreCaracteristica='Talla'");
@@ -55,7 +55,7 @@ $IdProducto=$producto['IdProducto'];
                             ?>
                             
                             <?php
-                                $sql = $pdo->prepare("SELECT c.NombreCaracteristica, v.Valor,m.Precio,m.Cantidad from detalle d 
+                                $sql = $pdo->prepare("SELECT c.NombreCaracteristica, v.Valor,m.Precio,m.Cantidad, d.IdDetalle, m.IdMaestro from detalle d 
                                 inner join maestro m on m.IdMaestro=d.IdMaestro
                                 inner join valor v on d.IdValor=v.IdValor
                                 inner join caracteristicas c on c.IdCaracteristicas=v.IdCaracteristicas where m.IdProducto=$IdProducto and c.NombreCaracteristica='Color'");
@@ -91,7 +91,7 @@ $IdProducto=$producto['IdProducto'];
                                             <td class="column-4">
                                                 $<?php echo $dato['Precio']?>
                                             </td>
-                                            <td class="column-5"><a href="../Recursos/DeleteCarrito.php"
+                                            <td class="column-5"><a href="../Recursos/EliminarCar.php?IdDetalle=<?php echo $dato['IdDetalle'];?>&IdMaestro=<?php echo $dato['IdMaestro'];?>"
                                                 onclick="funcionAlertaE()">Eliminar</a>
                                             </td>
 
@@ -107,7 +107,7 @@ $IdProducto=$producto['IdProducto'];
                                 <div class="col-sm-4">
                                 </div>
                                 <div class="col-sm-4">
-                                    <a href="Productos.php" class="btn btn-primary btn-block">Terminar</a>
+                                    <a href="Index.php" class="btn btn-primary btn-block">Terminar</a>
                                 </div>
                                 <div class="col-sm-4">
                                 </div>

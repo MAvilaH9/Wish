@@ -138,6 +138,20 @@ $resultado = $sql->fetch();
 									<button class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5">
 										Aplicar
 									</button>
+									<?php 
+									    $sql1= $pdo->prepare("SELECT d.DireccionCliente1, d.Pais, d.Ciudad, d.Pais, d.CodigoPostal, d.Telefono, u.Correo 
+										FROM direccionusuario d inner join usuario u on d.IdUsuario=u.IdUsuario WHERE d.IdUsuario=$IdUsuario");
+										$sql1 -> execute(array($IdUsuario));
+										$resultado1 = $sql1->fetch();
+									?>
+									<?php
+									if (empty($resultado1)) {?>
+										<a class="flex-c-m stext-101 cl2 size-118 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-5" href="RegDireccion.php?IdUsuario?<?php echo $IdUsuario ?>">
+										Agrega Direccion de Envio
+									</a>
+									<?php }
+									?>
+
 								</div>
 							</div>
 						</form>

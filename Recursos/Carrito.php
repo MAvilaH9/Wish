@@ -25,6 +25,7 @@ $Estatus = 'Pendiente';
         
 
 if ($Valort != $talla && $Valorc != $color || $Valort != $talla || $Valorc != $color) {
+    
     $sql_agregar = 'INSERT INTO carrito (Cantidad,IdProducto,IdUsuario, IdVendedor,IdCupon,IdPeso, Estatus) VALUES (?,?,?,?,null,null,?)';
     $sentencia_agregar = $pdo->prepare($sql_agregar);
 

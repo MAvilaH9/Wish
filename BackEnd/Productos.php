@@ -1,7 +1,13 @@
 <?php 
 require_once ('../Recursos/Conexion.php');
 
-$IdVendedor=$_SESSION['IdVendedor'];
+
+$IdUsuario=$_SESSION['IdUsuario'];
+$sql = $pdo->prepare("SELECT * FROM vendedor where IdUsuario=$IdUsuario");
+$sql -> execute(array($IdUsuario));
+$resultado = $sql->fetch();
+$IdVendedor=$resultado['IdVendedor'];
+
 $sql= $pdo->prepare("SELECT * FROM producto where IdVendedor=$IdVendedor");
 $sql->execute();
 $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
@@ -52,8 +58,8 @@ $resultado=$sql->fetchALL(PDO::FETCH_ASSOC);
                             <td><?php echo $dato['Precio']?></td>
                             <td><?php echo $dato['PrecioDescuento']?> </td>
                             <td><?php echo $dato['Cantidad']?></td>
-                            <td><a href="#"><img src="img/Editar.png" alt=""></a></td>
-                            <td><a href="#"><img src="img/Eliminar.png" alt=""></a></td>
+                            <td><a href="ActualizarProd.php?IdProducto=<?php echo $dato['IdProducto'];?>"><img src="img/Editar.png" alt=""></a></td>
+                            <td><a href="../Recursos/EliminarProd.php?IdProducto=<?php echo $dato['IdProducto'];?>"><img src="img/Eliminar.png" alt=""></a></td>
                         </tr>
                         <?php endforeach?>
                     </tbody>

@@ -65,6 +65,7 @@ if ($IdProducto!=$Producto) {
         $resultado = $sql->fetch();
         $idVendedor=$resultado['IdVendedor'];
         $Caracteristica=$resultado['NombreCaracteristica'];
+        $Valor=$resultado['Valor'];
         ?>
         <div class="row">
             <div class="col-md-6 col-lg-7 p-b-30">
@@ -183,7 +184,7 @@ if ($IdProducto!=$Producto) {
                     <div class="p-t-33">
                         <form action="../Recursos/Carrito.php" method="Post">
                             <?php
-                            if (!empty($Caracteristica=="Talla")) {?>
+                            if (!empty($Caracteristica=="Talla" && $Valor)) {?>
                                 <?php 
                                 $IdProducto=$_GET['IdProducto'];
                                 $sql= $pdo->prepare("SELECT c.NombreCaracteristica,v.IdValor, v.Valor,m.Precio,m.Cantidad,m.IdMaestro from detalle d 
@@ -281,7 +282,7 @@ if ($IdProducto!=$Producto) {
                                     <br>
                                     <input type="submit" value="Agregar al Carrito" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04" onclick="funcionalert();">
                                     <br> <br> <br>
-                                    <a href="Index.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Cancelar</a>
+                                    <a href="Productos.php" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">Cancelar</a>
                                 </div>
                             </div>
                         </form>

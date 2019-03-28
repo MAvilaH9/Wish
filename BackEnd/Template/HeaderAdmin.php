@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['IdPerfil'] == 2 || $_SESSION['IdPerfil'] == 3) {
+if ($_SESSION['IdPerfil'] == 1 || $_SESSION['IdPerfil'] == 2) {
 
 
 
@@ -73,44 +73,38 @@ if ($_SESSION['IdPerfil'] == 2 || $_SESSION['IdPerfil'] == 3) {
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo''.$_SESSION['Nombre_Usuario'].'&nbsp;' .$_SESSION["Apellidos"];?></p>
                   <div>
-                    <small class="designation text-muted">Vendedor</small>
+                    <small class="designation text-muted">Administrador</small>
                     <span class="status-indicator online"></span>
                   </div>
                 </div>
               </div>
-              <a class="btn btn-success btn-block" href="../BackEnd/Producto.php">Nuevo Producto
-                <i class="mdi mdi-plus"></i></a>
+              <!-- <a class="btn btn-success btn-block" href="../BackEnd/Producto.php">Nuevo Producto
+                <i class="mdi mdi-plus"></i></a> -->
             </div>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="../BackEnd/Index.php">
               <i class="menu-icon mdi mdi-television"></i>
               <span class="menu-title">Productos</span>
             </a>
-          </li>
-          <!-- <li class="nav-item">
+          </li> -->
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-content-copy"></i>
-              <span class="menu-title">Categorias</span>
+              <span class="menu-title">Administrar</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="#">Categorías</a>
+                </li> -->
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Buttons</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Typography</a>
+                  <a class="nav-link" href="../BackEnd/Cupones.php">Cupones</a>
                 </li>
               </ul>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="menu-icon mdi mdi-backup-restore"></i>
-              <span class="menu-title">Promociones</span>
-            </a>
-          </li> -->
         </ul>
       </nav>
       
